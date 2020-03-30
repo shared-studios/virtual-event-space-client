@@ -1,5 +1,6 @@
 import { createStore } from "redux";
-import reducer from "./reducer"
+// import reducer from "./reducer"
+import reducer from "./reducer copy"
 
 const token = localStorage.getItem('token')
 
@@ -10,6 +11,5 @@ export default createStore(reducer, {
         token: token ? JSON.parse(localStorage.getItem('token')) : {},
         signed_in: token ? true : false
     },
-    users: [],
-    rooms: []
+    rooms: {}
 })

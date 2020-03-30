@@ -13,6 +13,19 @@ const WebSocket = (props) => {
             console.log('connected to web socket')
             dispatch({ type: "SOCKET-CONNECTION", payload: socket })
         })
+        socket.on('connected', (data) => {
+            console.log('connected', data)
+            dispatch({ type: "ADD-USERS-ROOMS", payload: data })
+            dispatch({ type: "ADD-ME", payload: data.me })
+        })
+        socket.on('update-user', (user) => {
+            console.log('update-user', user)
+            dispatch({ type: "UPDATE-USER", payload: user })
+        })
+        socket.on('delete-user', (user) => {
+            console.log('delete-user', user)
+            dispatch({ type: "DELETE-USER", payload: user })
+        })
         socket.on('disconnect', () => {
             console.log('disconnected from web socket')
         })
@@ -20,9 +33,6 @@ const WebSocket = (props) => {
             if (error.code === '124' || error.message === 'Access token is expired.') {
                 dispatch({ type: "AUTHENTICATED", payload: false })
             }
-        })
-        socket.on('users-and-rooms', (data) => {
-            console.log('users-and-rooms from web socket', data)
         })
     }, [dispatch, user.token.access_token])
 

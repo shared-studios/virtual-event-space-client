@@ -1,0 +1,65 @@
+.rooms {
+    display: grid;
+    justify-content: center;
+    grid-auto-flow: column;
+}
+
+.room {
+    width: 20rem;
+    border: 1px solid black;
+    height: 20rem;
+}
+
+.room_with_sit_4 {
+    display: grid;
+    grid-template-areas: "room_name room_name" "sit_0 sit_1" "table table" "sit_2 sit_3";
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+}
+
+.room_name {
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    grid-area: room_name;
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: 2rem;
+}
+
+.sit {
+    background: green;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+}
+
+.table {
+    background: black;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    grid-area: table;
+    justify-self: center;
+}
+
+.users {
+    font-weight: 400;
+    font-size: .9rem;
+}
+
+.iframe_container {
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+}
+
+.iframe {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

@@ -18,49 +18,40 @@ export default (state, { type, payload }) => {
 }
 
 const addUsersAndRooms = (state, payload) => {
-  let rooms = state.rooms
+  const rooms = state.rooms
 
   payload.rooms.forEach((room) => {
     let { topic, meeting_id, number_of_guests, room_id } = room
-    rooms[room_id] = { room_id, topic, meeting_id, number_of_guests, sits: {} }
-    for (let i = 0; i < number_of_guests; i++) {
-      rooms[room_id].sits[i + 1] = { occupied: false }
-    }
+    rooms[room_id] = { room_id, topic, meeting_id, number_of_guests, users: {} }
   })
 
   payload.users.forEach((user) => {
-    let room = rooms[user.room_id || 'general']
-    if (!rooms[room]) {
+    user.room_id = user.room_id || ['general']
+    if (!rooms[user.room_id[0]]) {
       console.log('creating general room')
-      room = {
+      rooms[user.room_id[0]] = {
         topic: 'general',
         users: {}
       }
     }
-
-    if (room.topic === 'general') {
-      room.users[user.id] = { ...user }
-    } else {
-      room.sits[user.sit] = { ...user, occupied: true }
-    }
-    rooms[room] = room
+    const { id, first_name, last_name, socket_id, room_id, email, status } = user
+    rooms[user.room_id[0]].users[user.id] = { id, first_name, last_name, socket_id, room_id, email, status }
   })
   return { ...state, rooms: { ...rooms } }
 }
 
 const updateUser = (state, payload) => {
-  // if (!payload.room_id) {
-  //   payload.room_id = 'general'
-  // }
-  // state.rooms[payload.room_id].users[payload.id] = { ...payload }
+  if (!payload.room_id) {
+    payload.room_id = 'general'
+  }
+  state.rooms[payload.room_id].users[payload.id] = { ...payload }
   return { ...state, rooms: { ...state.rooms } }
 }
 
 const deleteUser = (state, payload) => {
-  // if (!payload.room_id) {
-  //   payload.room_id = 'general'
-  // }
-  // delete state.rooms[payload.room_id].users[payload.id]
+  if (!payload.room_id) {
+    payload.room_id = 'general'
+  }
+  delete state.rooms[payload.room_id].users[payload.id]
   return { ...state, rooms: { ...state.rooms } }
 }
-

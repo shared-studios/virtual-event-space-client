@@ -5,7 +5,7 @@
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr repeat(4, 15rem);
+    grid-template-columns: 1fr repeat(4, max-content);
     align-items: center;
     justify-items: center;
     border-bottom: 0.2rem solid rgb(111, 101, 101);
@@ -24,4 +24,5 @@
     font-weight: 500;
     text-decoration: none;
     color: rgb(0, 0, 0);
+    margin-right: 5rem;
 }

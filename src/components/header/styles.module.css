@@ -1,0 +1,27 @@
+.header {
+    padding: .5rem;
+    width: 100%;
+    height: max-content;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr repeat(4, 15rem);
+    align-items: center;
+    justify-items: center;
+    border-bottom: 0.2rem solid rgb(111, 101, 101);
+}
+
+.logo {
+    font-family: sans-serif;
+    font-weight: 500;
+    width: 17rem;
+    font-size: 2rem;
+    justify-self: left;
+}
+
+.link {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}

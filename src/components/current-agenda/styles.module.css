@@ -1,0 +1,17 @@
+.current_agenda {
+    background-color: rgb(78, 69, 48);
+    width: 100%;
+    padding: 1rem;
+}
+
+.time_title {
+    color: rgb(165, 132, 52);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.description {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-weight: 200;
+}

@@ -1,0 +1,18 @@
+.agenda {
+    background-color: rgb(0, 102, 255);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content auto;
+    margin-bottom: 0.5rem;
+}
+
+.time {
+    grid-column: 1;
+    color: rgb(195, 195, 195);
+    margin-right: .5rem;
+}
+
+.title {
+    grid-column: 2;
+    color: rgb(195, 195, 195);
+}

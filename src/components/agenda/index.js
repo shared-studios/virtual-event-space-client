@@ -6,7 +6,7 @@ const Agenda = ({ time, title }) => {
     return (
         <div className={styles.agenda}>
             <p className={styles.time}>{moment(time).format('h:mm a')}</p>
-            <p className={styles.text}>{title}</p>
+            <p className={styles.title}>{title}</p>
         </div>
     )
 }

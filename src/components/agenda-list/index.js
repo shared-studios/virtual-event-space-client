@@ -12,7 +12,7 @@ const AgendaList = () => {
     useEffect(() => {
         axios.get('https://auhb4v0d92.execute-api.us-east-2.amazonaws.com/agenda', {
             headers: {
-                Authorization: token
+                authorization: token
             }
         }).then((res) => {
             console.log(res)
@@ -25,7 +25,7 @@ const AgendaList = () => {
     return (
         <div className={styles.agenda_list}>
             <p className={styles.title}>ORDER OF CEREMONY</p>
-            {agendas.map(({ time, title }) => <Agenda time={time} title={title} />)}
+            {agendas.map(({ time, title }, i) => <Agenda key={i} time={time} title={title} />)}
         </div>
     )
 }

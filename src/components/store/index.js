@@ -12,5 +12,6 @@ export default createStore(reducer, {
         ...user,
         authenticated: false,
         signed_in: user.token ? true : false
-    }
+    },
+    messages: []
 })

@@ -1,6 +1,7 @@
 import React from 'react';
 // import { useDispatch, useSelector } from "react-redux"
 import Header from '../header'
+import Chat from '../chat'
 import LiveContent from '../live-content'
 import LiveVideo from '../live-video'
 import AgendaList from '../agenda-list'
@@ -18,6 +19,7 @@ const LandingPage = (props) => {
                 <AgendaList />
                 <LiveVideo />
                 <LiveContent />
+                <Chat />
             </div>
                 : <div>Unauthorized</div>}
         </React.Fragment>

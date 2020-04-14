@@ -2,25 +2,15 @@ import React, { useEffect } from 'react'
 import Agenda from '../agenda'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './styles.module.css'
-import axios from 'axios'
+import { fetchAgenda } from '../actions/agenda-fetch'
 
 const AgendaList = () => {
-    const token = useSelector(state => state.user.token)
     const agendas = useSelector(state => state.agendas)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        axios.get('https://auhb4v0d92.execute-api.us-east-2.amazonaws.com/agenda', {
-            headers: {
-                authorization: token
-            }
-        }).then((res) => {
-            console.log(res)
-            dispatch({ type: 'AGENDAS', payload: res.data })
-        }).catch((error) => {
-            console.log(error.response)
-        })
-    }, [token, dispatch])
+        dispatch(fetchAgenda())
+    }, [dispatch])
 
     return (
         <div className={styles.agenda_list}>

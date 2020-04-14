@@ -1,12 +1,11 @@
 import React from 'react';
-// import { useDispatch, useSelector } from "react-redux"
 import Header from '../header'
 import Chat from '../chat'
 import LiveContent from '../live-content'
 import LiveVideo from '../live-video'
 import AgendaList from '../agenda-list'
-import useAuthentication from '../authentication'
 import styles from './styles.module.css'
+import useAuthentication from '../authentication'
 
 const LandingPage = (props) => {
     const { event_id, user_id } = props.match.params
@@ -14,14 +13,14 @@ const LandingPage = (props) => {
     return (
         <React.Fragment>
             {console.log('LandingPage')}
-            {authenticated ? <div className={styles.landing_page}>
-                <Header />
-                <AgendaList />
-                <LiveVideo />
-                <LiveContent />
-                <Chat />
-            </div>
-                : <div>Unauthorized</div>}
+            {authenticated &&
+                <div className={styles.landing_page}>
+                    <Header />
+                    <AgendaList />
+                    <LiveVideo />
+                    <LiveContent />
+                    <Chat />
+                </div>}
         </React.Fragment>
     )
 }

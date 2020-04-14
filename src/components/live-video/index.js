@@ -5,7 +5,7 @@ import CurrentAgenda from '../current-agenda'
 const LiveVideo = () => {
     return (
         <div className={styles.live_video}>
-            <video className={styles.video} src=''></video>
+            <video className={styles.video} src=''/>
             <CurrentAgenda />
         </div>
     )

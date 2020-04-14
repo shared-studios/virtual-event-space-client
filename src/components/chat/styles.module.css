@@ -20,13 +20,13 @@
     grid-row: 1/3;
     width: 20rem;
     height: 30rem;
-    display: grid;
+    display: list-item;
     background-color: rgb(255, 255, 255);
     grid-auto-rows: min-content;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 1rem;
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
 }
 
 .message_box {

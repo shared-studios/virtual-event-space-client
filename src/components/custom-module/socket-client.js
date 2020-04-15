@@ -1,18 +1,9 @@
 export default () => {
-    const url = window.config.socket_url
-    const socket = new WebSocket(url)
+    const socket = new WebSocket(`${window.config.socket_url}?authorization=${window.config.token}`)
 
-    let connected = false
+    const onConnect = (call_back) => socket.onopen = (event) => call_back(event)
 
-    const onConnect = (call_back) => socket.onopen = (event) => {
-        connected = true
-        call_back(event)
-    }
-
-    const onDisconnect = (call_back) => socket.onclose = (event) => {
-        connected = false
-        call_back(event)
-    }
+    const onDisconnect = (call_back) => socket.onclose = (event) => call_back(event)
 
     const onError = (call_back) => socket.onerror = (event) => call_back(event)
 
@@ -39,5 +30,5 @@ export default () => {
         }
         socket.send(JSON.stringify({ action, data }))
     }
-    return { send, onError, onDisconnect, onConnect, connected }
+    return { on, send, onError, onDisconnect, onConnect }
 }

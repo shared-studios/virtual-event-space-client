@@ -22,6 +22,10 @@ export default {
     get: (path, config) => {
         return axios.get(`${window.config.api_url}/${path}`, axiosConfig(config)).catch(catchError)
     },
+    put: (path, data, config) => {
+        config = axiosConfig(config)
+        return axios.put(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)
+    },
     post: (path, data, config) => {
         config = axiosConfig(config)
         return axios.post(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)

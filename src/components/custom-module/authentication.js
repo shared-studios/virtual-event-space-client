@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import moment from 'moment'
 import jwt from 'jsonwebtoken'
-import { fetchUser } from '../actions/user-fetch'
+import { fetchUser } from '../actions/user'
 import { useDispatch, useSelector } from "react-redux"
 
 const useAuthentication = (event_id, user_id) => {

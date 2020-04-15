@@ -29,6 +29,14 @@
     padding-bottom: 5rem;
 }
 
+.show {
+    display: list-item;
+}
+
+.hide {
+    display: none;
+}
+
 .message_box {
     width: 90%;
     height: 3rem;

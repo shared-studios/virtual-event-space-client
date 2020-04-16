@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { socket } from '../custom-module'
 import { createSocket } from '../actions/socket'
 import { useDispatch } from 'react-redux'
 
-const useSocket = () => {
+const Socket = (props) => {
     const dispatch = useDispatch()
     const [connected, setConnection] = useState(false)
 
@@ -25,7 +25,12 @@ const useSocket = () => {
 
     }, [dispatch])
 
-    return connected
+    return (
+        <React.Fragment>
+            {console.log('Socket')}
+            {connected && props.children}
+        </React.Fragment>
+    )
 }
 
-export default useSocket
+export default React.memo(Socket)

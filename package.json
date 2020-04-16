@@ -2,6 +2,7 @@
   "name": "virtual-workspace-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shared-studios.github.io/virtual-event-space-client",
   "dependencies": {
     "axios": "^0.19.2",
     "jsonwebtoken": "^8.5.1",
@@ -20,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }

@@ -1,10 +1,10 @@
 export default (state = [], { type, payload }) => {
     switch (type) {
         case "FETCH-AGENDAS_FULFILLED": {
-            console.log(payload.data)
             const agendas = payload.data.map((agenda, i) => {
                 return { ...agenda, index: i }
             })
+            console.log('FETCH-AGENDAS_FULFILLED:', agendas)
             return [...agendas]
         }
         case "FETCH-CURRENT-AGENDA_FULFILLED": {

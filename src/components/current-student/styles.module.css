@@ -1,0 +1,33 @@
+.current_student {
+    background-color: rgb(4, 56, 134);
+    grid-row: 2/4;
+    grid-column: 3;
+    color: rgb(214, 170, 42);
+    margin-left: 1rem;
+    display: grid;
+    justify-items: flex-start;
+    padding: 2rem;
+    height: max-content;
+    width: max-content;
+}
+
+.image {
+    justify-self: center;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 100%;
+    margin: 0rem 0rem 2rem 0rem;
+    object-fit: cover;
+}
+
+.name {
+    color: rgb(165, 132, 52);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.degree {
+    color: rgb(190, 153, 65);
+    font-size: 1rem;
+    font-weight: 300;
+}

@@ -2,7 +2,7 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-auto-rows: max-content auto;
-    grid-auto-columns: 25% 50% 25%;
+    grid-auto-rows: max-content max-content auto;
+    grid-auto-columns: 25% auto auto;
     padding: 1rem;
 }

@@ -1,30 +1,31 @@
 import React from 'react';
 import Header from '../header'
 import Chat from '../chat'
-import LiveContent from '../live-content'
+import CurrentStudent from '../current-student'
 import LiveVideo from '../live-video'
+import CurrentAgenda from '../current-agenda'
 import AgendaList from '../agenda-list'
 import styles from './styles.module.css'
-import useAuthentication from '../custom-module/authentication'
-import useSocket from '../socket'
+import Authentication from '../authentication'
+import Socket from '../socket'
 
 const LandingPage = (props) => {
     const { event_id, user_id } = props.match.params
-    const { authenticated } = useAuthentication(event_id, user_id)
-    const connected = useSocket()
 
     return (
-        <React.Fragment>
-            {console.log('LandingPage')}
-            {(authenticated && connected) &&
+        <Authentication eventId={event_id} userId={user_id}>
+            <Socket>
+                {console.log('LandingPage')}
                 <div className={styles.landing_page}>
                     <Header />
                     <AgendaList />
                     <LiveVideo />
-                    <LiveContent />
+                    <CurrentAgenda />
+                    <CurrentStudent />
                     <Chat />
-                </div>}
-        </React.Fragment>
+                </div>
+            </Socket>
+        </Authentication>
     )
 }
 

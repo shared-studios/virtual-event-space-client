@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const catchError = (error) => {
-    console.log(error.response)
+    console.log(error)
     console.log(window.config)
 }
 
@@ -15,6 +15,7 @@ const axiosConfig = (config) => {
             }
         }
     }
+    // console.log('config:', config)
     return config
 }
 
@@ -23,19 +24,15 @@ export default {
         return axios.get(`${window.config.api_url}/${path}`, axiosConfig(config)).catch(catchError)
     },
     put: (path, data, config) => {
-        config = axiosConfig(config)
         return axios.put(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)
     },
     post: (path, data, config) => {
-        config = axiosConfig(config)
         return axios.post(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)
     },
     patch: (path, data, config) => {
-        config = axiosConfig(config)
         return axios.patch(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)
     },
     delete: (path, config) => {
-        config = axiosConfig(config)
         return axios.delete(`${window.config.api_url}/${path}`, axiosConfig(config)).catch(catchError)
     }
 }

@@ -1,11 +1,10 @@
 {
-  "name": "virtual-workspace-client",
+  "name": "virtual-event-space-client",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://shared-studios.github.io/virtual-event-space-client",
   "dependencies": {
     "axios": "^0.19.2",
-    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -13,10 +12,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^6.1.2",
-    "redux-thunk": "^2.3.0",
-    "socket.io-client": "^2.3.0"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "redux-logger": "^3.0.6",
     "gh-pages": "^2.0.1"
   }
 }

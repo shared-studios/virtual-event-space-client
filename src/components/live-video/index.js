@@ -4,7 +4,18 @@ import styles from './styles.module.css'
 const LiveVideo = () => {
 
     return (
-        <video className={styles.live_video} src='' />
+        <div className={styles.container}>
+            <video className={styles.live_video} />
+            <iframe
+                className={styles.video_iframe}
+                title='video'
+                src="https://www.youtube.com/embed/2VeZvXiXX2o?controls=0"
+                frameborder="0"
+                allow="autoplay"
+                allowFullScreen
+            />
+        </div>
+
     )
 }
 

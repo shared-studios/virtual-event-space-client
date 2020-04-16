@@ -4,23 +4,21 @@
     grid-auto-columns: max-content auto;
     margin-bottom: 1rem;
     font-weight: 300;
+    color: rgb(238, 238, 238);
+    font-size: 0.9rem;
 }
 
 .time {
     grid-column: 1;
-    color: rgb(238, 238, 238);
     margin-right: .5rem;
-    font-size: 0.9rem;
 }
 
 .title {
     grid-column: 2;
-    color: rgb(240, 240, 240);
-    font-size: 0.9rem;
 }
 
 .previous {
-    opacity: 50%;
+    color: rgba(240, 240, 240, 0.8);
 }
 
 .current {

@@ -1,7 +1,6 @@
 import React from 'react'
 // import styles from './styles.module.css'
 import Authentication from '../authentication'
-import Socket from '../socket'
 import AgendaControl from '../control-agenda'
 import StudentControl from '../control-student'
 

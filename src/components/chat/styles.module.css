@@ -4,6 +4,7 @@
     position: fixed;
     left: 1.02rem;
     bottom: 1rem;
+    z-index: 100;
 }
 
 .chat_button {

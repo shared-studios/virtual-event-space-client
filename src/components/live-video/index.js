@@ -10,7 +10,7 @@ const LiveVideo = () => {
                 className={styles.video_iframe}
                 title='video'
                 src="https://www.youtube.com/embed/2VeZvXiXX2o?controls=0"
-                frameborder="0"
+                frameBorder="0"
                 allow="autoplay"
                 allowFullScreen
             />

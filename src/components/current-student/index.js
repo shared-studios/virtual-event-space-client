@@ -17,12 +17,14 @@ const CurrentStudent = () => {
     }, [dispatch, socket])
 
     return (
-        <div className={styles.current_student}>
-            {console.log('CurrentStudent')}
-            {student && <img className={styles.image} alt='student' src={student.image} />}
-            {student && <p className={styles.name}>{student.name}</p>}
-            {student && <p className={styles.degree}>{student.degree}</p>}
-        </div>
+        <React.Fragment>
+            {student && <div className={styles.current_student}>
+                {console.log('CurrentStudent')}
+                <img className={styles.image} alt='student' src={student.image} />
+                <p className={styles.name}>{student.name}</p>
+                <p className={styles.degree}>{student.degree}</p>
+            </div>}
+        </React.Fragment>
     )
 }
 

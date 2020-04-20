@@ -1,50 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import styles from './styles.module.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchAgenda, updateCurrentAgenda } from '../actions/agenda'
-import { axios } from '../custom-module'
+import { fetchAgenda } from '../actions/agenda'
 
 const AgendaControl = () => {
+    const [agenda, setAgenda] = useState()
     const agendas = useSelector(state => state.agendas)
-    const agenda = agendas.filter((agenda) => agenda.status === 'current')[0] || agendas[0]
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchAgenda())
     }, [dispatch])
 
-    const handelNext = () => {
-        const index = agenda.index + 1
-        if (index < agendas.length) {
-            const time = agendas[index]?.time
-            updateAgenda(time)
-        }
-    }
+    useEffect(() => {
+        const agenda = agendas.filter((agenda) => agenda.status === 'current')[0] || agendas[0]
+        setAgenda(agenda)
+    }, [agendas])
 
-    const handelPrevious = () => {
-        const index = agenda.index - 1
-        if (index >= 0) {
-            const time = agendas[index]?.time
-            updateAgenda(time)
-        }
-    }
-
-    const updateAgenda = (time) => {
-        if (time) {
-            axios.put(`current-agenda/${time}`)
-                .then(() => {
-                    dispatch(updateCurrentAgenda(time))
-                })
-        }
+    const handleOnChange = (e) => {
+        const index = e.target.value
+        console.log(index)
+        setAgenda(index ? agendas[index] : '')
     }
 
     return (
         <div>
             {console.log('AgendaControl')}
-            <p>agenda</p>
-            <p>current agenda: {agenda?.title}</p>
-            <button onClick={handelPrevious}>previous</button>
-            <button onClick={handelNext}>next</button>
+            <label>agenda: </label>
+            <select
+                value={agenda?.index}
+                onChange={handleOnChange}
+                name={agenda}
+            >
+                {agendas.map((agenda, i) => {
+                    return <option key={i} value={i}> {agenda.title}</option>
+                })}
+            </select>
         </div>
     )
 }

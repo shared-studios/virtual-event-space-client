@@ -2,17 +2,16 @@ import React, { useEffect } from 'react';
 import styles from './styles.module.css'
 import moment from 'moment'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateCurrentAgenda } from '../actions/agenda'
+import { OnUpdateCurrentAgenda } from '../actions/agenda'
 
 const CurrentAgenda = () => {
     const socket = useSelector(state => state.socket)
     const dispatch = useDispatch()
-    const agenda = useSelector(state => state.agendas.filter((agenda) => agenda.status === 'current')[0] || [])
+    const agenda = useSelector(state => state.agendas.filter((agenda) => agenda.status === 'current')[0])
 
     useEffect(() => {
         socket.on('current-agenda', ({ time }) => {
-            console.log(time)
-            dispatch(updateCurrentAgenda(time))
+            dispatch(OnUpdateCurrentAgenda(time))
         })
     }, [dispatch, socket])
 

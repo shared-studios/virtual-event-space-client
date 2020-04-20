@@ -1,4 +1,4 @@
-export default (state = [], { type, payload }) => {
+export default (state = ["dsdfs": {}], { type, payload }) => {
     switch (type) {
         case "FETCH-AGENDAS_FULFILLED": {
             const agendas = payload.data.map((agenda, i) => {
@@ -17,27 +17,36 @@ export default (state = [], { type, payload }) => {
                     }
                     if (agenda.time === time && !foundCurrent) {
                         foundCurrent = true
+                        state.current_agenda = agenda
                         return { ...agenda, status: 'current' }
                     }
                     return { ...agenda, status: 'next' }
                 })
                 return [...agendas]
+            } else {
+                state.current_agenda = state[0]
+                state[0] = { ...state[0], status: 'current' }
+                return [...state]
             }
-            return state
         }
         case "UPDATE-CURRENT-AGENDA": {
-            let foundCurrent = false
-            const agendas = state.map((agenda) => {
-                if (agenda.time !== payload && !foundCurrent) {
-                    return { ...agenda, status: 'previous' }
-                }
-                if (agenda.time === payload && !foundCurrent) {
-                    foundCurrent = true
-                    return { ...agenda, status: 'current' }
-                }
-                return { ...agenda, status: 'next' }
-            })
-            return [...agendas]
+            if (payload) {
+                let foundCurrent = false
+                const agendas = state.map((agenda) => {
+                    if (agenda.time !== payload && !foundCurrent) {
+                        return { ...agenda, status: 'previous' }
+                    }
+                    if (agenda.time === payload && !foundCurrent) {
+                        foundCurrent = true
+                        return { ...agenda, status: 'current' }
+                    }
+                    return { ...agenda, status: 'next' }
+                })
+                return [...agendas]
+            } else {
+                state[0] = { ...state[0], status: 'current' }
+                return [...state]
+            }
         }
         default: {
             return state

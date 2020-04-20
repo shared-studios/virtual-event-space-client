@@ -9,7 +9,20 @@ export default (state = [], { type, payload }) => {
             return [...state]
         }
         case "NEW-MESSAGE": {
-            state.push(payload)
+            console.log(payload)
+            if (!payload.approved) {
+                const newState = state.filter((message) => message.time_stamp !== payload.time_stamp)
+                console.log(newState)
+                return [...newState]
+            }
+
+            const found = state.find((message) => message.time_stamp === payload.time_stamp)
+            console.log(found)
+            if (!found && payload.approved) {
+                state.push(payload)
+                return [...state]
+            }
+
             return [...state]
         }
         default: {

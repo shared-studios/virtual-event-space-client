@@ -5,12 +5,25 @@ export const fetchAgenda = () => {
         axios.get('agenda')
             .then((res) => {
                 dispatch({ type: 'FETCH-AGENDAS_FULFILLED', payload: res })
-                dispatch({ type: 'FETCH-CURRENT-AGENDA', payload: axios.get('current-agenda') })
+                axios.get('current-agenda').then((res) => {
+                    dispatch({ type: 'UPDATE-CURRENT-AGENDA', payload: res.data })
+                })
             })
     }
 }
 
-export const updateCurrentAgenda = (id) => {
+export const updateCurrentAgenda = (time) => {
+    return (dispatch) => {
+        if (time) {
+            axios.put(`current-agenda/${time}`)
+                .then(() => {
+                    dispatch({ type: 'UPDATE-CURRENT-AGENDA', payload: time })
+                })
+        }
+    }
+}
+
+export const OnUpdateCurrentAgenda = (id) => {
     return (dispatch) => {
         dispatch({ type: 'UPDATE-CURRENT-AGENDA', payload: id })
     }

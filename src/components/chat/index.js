@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.css'
 import Message from '../message'
 import send from '../svg/send.svg'
-import { fetchMessages, postMessages, newMessage } from '../actions/message'
+import { fetchMessages, postMessage, newMessage } from '../actions/message'
 
 const Chat = () => {
     const [showChat, toggleChat] = useState(false)
@@ -19,8 +19,7 @@ const Chat = () => {
         const onEnter = (e) => {
             if (e.keyCode === 13) {
                 if (chatInput.current.value) {
-                    postMessages(chatInput.current.value)
-                    // dispatch(postMessages(chatInput.current.value))
+                    dispatch(postMessage(chatInput.current.value))
                     chatInput.current.value = ''
                 }
                 chatInput.current.focus()
@@ -35,8 +34,7 @@ const Chat = () => {
 
     const handleSendMessage = () => {
         if (chatInput.current.value) {
-            postMessages(chatInput.current.value)
-            // dispatch(postMessages(chatInput.current.value))
+            dispatch(postMessage(chatInput.current.value))
             chatInput.current.value = ''
         }
         chatInput.current.focus()

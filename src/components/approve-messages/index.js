@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './styles.module.css'
 import ApproveMessage from '../approve-message'
-import { fetchMessages, newMessage } from '../actions/message'
+import { fetchMessages, newApproveMessage } from '../actions/message'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ApproveMessages = () => {
@@ -13,7 +13,7 @@ const ApproveMessages = () => {
     useEffect(() => {
         dispatch(fetchMessages())
         socket.on('message', (data) => {
-            dispatch(newMessage(data))
+            dispatch(newApproveMessage(data))
         })
     }, [dispatch, socket])
 

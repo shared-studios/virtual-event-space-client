@@ -1,25 +1,24 @@
 import { axios } from '../custom-module'
 
-export const fetchCurrentStudent = () => {
+export const fetchStudents = () => {
     return (dispatch) => {
-        axios.get('student')
-            .then((res) => {
-                dispatch({ type: 'FETCH-STUDENT_FULFILLED', payload: res })
-                dispatch({ type: 'FETCH-CURRENT-STUDENT', payload: axios.get('current-student') })
-            })
+        dispatch({ type: 'FETCH-STUDENTS', payload: axios.get('student') })
+    }
+}
 
+export const sendReaction = (student_id, emoji) => {
+    return (dispatch) => {
+        dispatch({ type: 'STUDENT-REACTION', payload: axios.patch(`reaction/${student_id}/${emoji}`) })
     }
 }
 
 export const updateCurrentStudent = (student) => {
     return (dispatch) => {
-
-        let axiosConfig = {
+        axios.put('current-student', student, {
             headers: {
                 'Content-Type': 'application/json',
             }
-        };
-        axios.put('current-student', student, axiosConfig).then(() => {
+        }).then(() => {
             dispatch({ type: 'UPDATE-CURRENT-STUDENT', payload: student })
         })
     }

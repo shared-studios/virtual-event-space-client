@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // import styles from './styles.module.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchCurrentStudent } from '../actions/student'
+import { fetchStudents } from '../actions/student'
 
 const StudentControl = () => {
     const [student, setStudent] = useState()
@@ -9,7 +9,7 @@ const StudentControl = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchCurrentStudent())
+        dispatch(fetchStudents())
     }, [dispatch])
 
     useEffect(() => {

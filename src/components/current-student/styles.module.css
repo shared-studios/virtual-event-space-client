@@ -1,14 +1,15 @@
 .current_student {
-    background-color: rgb(4, 56, 134);
     grid-row: 2/4;
     grid-column: 3;
-    color: rgb(214, 170, 42);
     margin-left: 1rem;
+}
+
+.student {
+    background-color: rgb(4, 56, 134);
+    color: rgb(214, 170, 42);
     display: grid;
     justify-items: flex-start;
     padding: 2rem;
-    height: max-content;
-    width: max-content;
 }
 
 .image {
@@ -30,4 +31,34 @@
     color: rgb(190, 153, 65);
     font-size: 1rem;
     font-weight: 300;
+}
+
+.reactions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.reaction {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    min-width: 3rem;
+    margin-right: 1rem;
+}
+
+.emoji {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 2rem;
+}
+
+.count {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    box-shadow: 10px 10px 84px 0px rgba(0, 0, 0, 0.75);
+    margin-left: 0.5rem;
 }

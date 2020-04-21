@@ -6,6 +6,12 @@ export const fetchCurrentStudent = () => {
     }
 }
 
+export const updateReaction = (student) => {
+    return (dispatch) => {
+        dispatch({ type: 'UPDATE-REACTION', payload: student })
+    }
+}
+
 export const updateCurrentStudent = (student) => {
     return (dispatch) => {
         dispatch({ type: 'UPDATE-CURRENT-STUDENT', payload: student })

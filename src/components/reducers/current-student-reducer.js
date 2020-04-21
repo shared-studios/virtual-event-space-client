@@ -12,6 +12,12 @@ export default (state = currentStudent, { type, payload }) => {
         case "UPDATE-CURRENT-STUDENT": {
             return payload
         }
+        case "STUDENT-REACTION_FULFILLED": {
+            return { ...state, ...payload.data }
+        }
+        case "UPDATE-REACTION": {
+            return { ...state, ...payload }
+        }
         default: {
             return state
         }

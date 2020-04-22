@@ -14,6 +14,6 @@ export const updateReaction = (reaction) => {
 
 export const sendReaction = (student_id, emoji) => {
     return (dispatch) => {
-        dispatch({ type: 'STUDENT-REACTION', payload: axios.patch(`student/reaction/${student_id}/jddj`) })
+        dispatch({ type: 'STUDENT-REACTION', payload: axios.patch(`student/reaction/${student_id}/${emoji}`) })
     }
 }

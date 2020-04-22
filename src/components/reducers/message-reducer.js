@@ -8,10 +8,6 @@ export default (state = [], { type, payload }) => {
             state.push(payload.data)
             return [...state]
         }
-        case 'NEW-APPROVE-MESSAGE': {
-            state.push(payload)
-            return [...state]
-        }
         case "NEW-MESSAGE": {
             if (!payload.approved) {
                 const newState = state.filter((message) => message.time_stamp !== payload.time_stamp)

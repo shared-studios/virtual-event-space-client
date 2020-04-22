@@ -1,12 +1,3 @@
-import { axios } from '../custom-module'
-
-export const publishAll = (data) => {
-    return (dispatch) => {
-        console.log(data)
-        dispatch({ type: 'PUBLISH', payload: axios.put('publish', data, { headers: { 'Content-Type': 'application/json' } }) })
-    }
-}
-
 export const onPublish = ({ agenda, student }) => {
     return (dispatch) => {
         console.log({ agenda, student })

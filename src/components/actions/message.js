@@ -4,10 +4,6 @@ export const newMessage = (message) => {
     return (dispatch) => dispatch({ type: 'NEW-MESSAGE', payload: message })
 }
 
-export const newApproveMessage = (message) => {
-    return (dispatch) => dispatch({ type: 'NEW-APPROVE-MESSAGE', payload: message })
-}
-
 export const fetchMessages = () => {
     return (dispatch) => dispatch({ type: 'FETCH-MESSAGES', payload: axios.get('message') })
 }

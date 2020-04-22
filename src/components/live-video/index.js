@@ -6,14 +6,14 @@ const LiveVideo = () => {
     return (
         <div className={styles.container}>
             <video className={styles.live_video} />
-            <iframe
+            {/* <iframe
                 className={styles.video_iframe}
                 title='video'
                 src="https://www.youtube.com/embed/2VeZvXiXX2o?controls=0"
                 frameBorder="0"
                 allow="autoplay"
                 allowFullScreen
-            />
+            /> */}
         </div>
 
     )

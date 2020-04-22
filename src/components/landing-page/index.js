@@ -7,6 +7,7 @@ import CurrentAgenda from '../current-agenda'
 import AgendaList from '../agenda-list'
 import styles from './styles.module.css'
 import Authentication from '../authentication'
+import Error from '../error'
 import Socket from '../socket'
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -38,6 +39,7 @@ const LandingPage = (props) => {
                     <Chat />
                 </div>
             </Socket>
+            <Error />
         </Authentication>
     )
 }

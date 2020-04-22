@@ -1,11 +1,5 @@
 import axios from 'axios'
 
-
-const catchError = (error) => {
-    console.log(error)
-    console.log(window.config)
-}
-
 const axiosConfig = (config) => {
     if (window.config.token) {
         config = {
@@ -21,18 +15,18 @@ const axiosConfig = (config) => {
 
 export default {
     get: (path, config) => {
-        return axios.get(`${window.config.api_url}/${path}`, axiosConfig(config)).catch(catchError)
+        return axios.get(`${window.config.api_url}/${path}`, axiosConfig(config))
     },
     put: (path, data, config) => {
-        return axios.put(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)
+        return axios.put(`${window.config.api_url}/${path}`, data, axiosConfig(config))
     },
     post: (path, data, config) => {
-        return axios.post(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)
+        return axios.post(`${window.config.api_url}/${path}`, data, axiosConfig(config))
     },
     patch: (path, data, config) => {
-        return axios.patch(`${window.config.api_url}/${path}`, data, axiosConfig(config)).catch(catchError)
+        return axios.patch(`${window.config.api_url}/${path}`, data, axiosConfig(config))
     },
     delete: (path, config) => {
-        return axios.delete(`${window.config.api_url}/${path}`, axiosConfig(config)).catch(catchError)
+        return axios.delete(`${window.config.api_url}/${path}`, axiosConfig(config))
     }
 }

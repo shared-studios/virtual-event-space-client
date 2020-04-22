@@ -7,9 +7,11 @@ import current_student from './current-student-reducer'
 import user from './user-reducer'
 import socket from './socket-reducer'
 import publish from './publish-reducer'
+import error from './error-reducer'
 
 export default combineReducers({
     user,
+    error,
     socket,
     publish,
     students,

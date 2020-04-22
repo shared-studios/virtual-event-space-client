@@ -32,7 +32,7 @@ const StudentControl = () => {
             <label className={styles.label}>Students: {student?.index} {student?.name}</label>
             <select className={styles.select} value={student?.index} onChange={handleChange}>
                 <option value=''>Select Student...</option>
-                {students.map(({ index, name }) => <option key={index} value={index}>{name}</option>)}
+                {students.map(({ index, name }) => <option key={index} value={index}>{index} {name}</option>)}
             </select>
         </div>
     )

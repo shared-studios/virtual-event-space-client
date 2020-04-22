@@ -1,10 +1,5 @@
-const currentStudent = {
-    name: 'ELIZABETH LETO',
-    degree: 'Bachelor of Arts in Communication Studies',
-    image: 'https://lh3.googleusercontent.com/proxy/02nNQflO0YQF0Qa4OZKuUhhLWTrdBX9uwNclroZxxQA6FPdgQ7an8x86_TwIyqfaTLExTMiUDFfBpAttwgcjqx1y5cBt-jnSgrKkUoj024yA2l8rF-d1IlB6UmaEHVpFZG2ccuMfBKZpRHuT9ihmtbo'
-}
 
-export default (state = currentStudent, { type, payload }) => {
+export default (state = {}, { type, payload }) => {
     switch (type) {
         case "FETCH-CURRENT-STUDENT_FULFILLED": {
             return payload.data
@@ -13,10 +8,22 @@ export default (state = currentStudent, { type, payload }) => {
             return payload
         }
         case "STUDENT-REACTION_FULFILLED": {
-            return { ...state, ...payload.data }
+            const { type, name } = payload.data
+            if (state[type]) {
+                state[type].push(name)
+            } else {
+                state[type] = [name]
+            }
+            return { ...state }
         }
         case "UPDATE-REACTION": {
-            return { ...state, ...payload }
+            const { type, name } = payload
+            if (state[type]) {
+                state[type].push(name)
+            } else {
+                state[type] = [name]
+            }
+            return { ...state }
         }
         default: {
             return state

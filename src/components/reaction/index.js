@@ -1,35 +1,21 @@
 import React from 'react'
 import styles from './styles.module.css'
-import { sendReaction } from '../actions/student'
+import { sendReaction } from '../actions/current-student'
 import { useDispatch } from 'react-redux'
+import emojis from '../emojis.json'
 
 const Reaction = ({ studentId }) => {
     const dispatch = useDispatch()
 
-    const handleClick = (emoji) => {
-        dispatch(sendReaction(studentId, emoji))
-    }
-
     return (
         <div className={styles.reaction}>
-            <button
-                className={styles.button}
-                onClick={() => handleClick('celebrate')}
-            >
-                <span role='img' aria-label="celebrate">🎉</span>
-            </button>
-            <button
-                className={styles.button}
-                onClick={() => handleClick('heart')}
-            >
-                <span role='img' aria-label="heart">♥️</span>
-            </button>
-            <button
-                className={styles.button}
-                onClick={() => handleClick('thumbs_up')}
-            >
-                <span role='img' aria-label="thumbs_up">👍</span>
-            </button>
+            {emojis.map(({ name, emoji }, i) => {
+                return (
+                    <button key={i} className={styles.button} onClick={() => dispatch(sendReaction(studentId, name))}>
+                        <span role='img' aria-label={name}>{emoji}</span>
+                    </button>
+                )
+            })}
         </div>
     )
 }

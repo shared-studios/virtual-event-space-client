@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './styles.module.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateCurrentStudent, fetchCurrentStudent, updateReaction } from '../actions/current-student'
+import { fetchCurrentStudent, updateReaction } from '../actions/current-student'
 import Reaction from '../reaction'
 
 const CurrentStudent = () => {
@@ -11,10 +11,6 @@ const CurrentStudent = () => {
 
     useEffect(() => {
         dispatch(fetchCurrentStudent())
-        socket.on('current-student', (student) => {
-            console.log(student)
-            dispatch(updateCurrentStudent(student))
-        })
         socket.on('reaction', (student) => {
             dispatch(updateReaction(student))
         })
@@ -23,7 +19,7 @@ const CurrentStudent = () => {
     return (
         <React.Fragment>
             {console.log('CurrentStudent')}
-            {student && <div className={styles.current_student}>
+            {student.index && <div className={styles.current_student}>
                 <div className={styles.student}>
                     <img className={styles.image} alt='student' src={student.image} />
                     <p className={styles.name}>{student.name}</p>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../header'
 import Chat from '../chat'
 import CurrentStudent from '../current-student'
@@ -9,8 +9,21 @@ import styles from './styles.module.css'
 import Authentication from '../authentication'
 import Socket from '../socket'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { onPublish } from '../actions/publish'
+
 const LandingPage = (props) => {
     const { event_id, user_id } = props.match.params
+    const socket = useSelector(state => state.socket)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (socket) {
+            socket.on('publish', (data) => {
+                dispatch(onPublish(data))
+            })
+        }
+    }, [dispatch, socket])
 
     return (
         <Authentication eventId={event_id} userId={user_id}>

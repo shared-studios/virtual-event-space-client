@@ -9,6 +9,7 @@ const Authentication = (props) => {
 
     useEffect(() => {
         dispatch(fetchUser(eventId, userId))
+        console.log('Authentication:dfsdfs')
     }, [dispatch, eventId, userId])
 
     return (

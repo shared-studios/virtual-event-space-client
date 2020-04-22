@@ -1,17 +1,12 @@
 export default (state = [], { type, payload }) => {
     switch (type) {
         case "FETCH-STUDENTS_FULFILLED": {
-            const students = payload.data.map((student, i) => {
-                return { ...student, index: i }
-            })
-            console.log('FETCH-STUDENT_FULFILLED:', students)
-            return [...students]
+            return [...payload.data]
         }
         case "UPDATE-CURRENT-STUDENT": {
             const students = state.map((student) => {
                 if (student.student_id === payload.student_id) {
-                    student.status = 'current'
-                    return student
+                    return { ...student, status: 'current' }
                 }
                 delete student.status
                 return student

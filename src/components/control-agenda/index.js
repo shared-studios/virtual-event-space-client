@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import styles from './styles.module.css'
+import styles from './styles.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchAgenda } from '../actions/agenda'
 
@@ -13,28 +13,21 @@ const AgendaControl = () => {
     }, [dispatch])
 
     useEffect(() => {
-        const agenda = agendas.filter((agenda) => agenda.status === 'current')[0] || agendas[0]
+        const agenda = agendas.find((agenda) => agenda.status === 'current')
         setAgenda(agenda)
     }, [agendas])
 
-    const handleOnChange = (e) => {
-        const index = e.target.value
-        console.log(index)
-        setAgenda(index ? agendas[index] : '')
+    const handleChange = (e) => {
+        setAgenda(agendas[e.target.value])
+        dispatch({ type: "UPDATE-PUBLISH-AGENDA", payload: agendas[e.target.value] })
     }
 
     return (
-        <div>
+        <div className={styles.agenda}>
             {console.log('AgendaControl')}
-            <label>agenda: </label>
-            <select
-                value={agenda?.index}
-                onChange={handleOnChange}
-                name={agenda}
-            >
-                {agendas.map((agenda, i) => {
-                    return <option key={i} value={i}> {agenda.title}</option>
-                })}
+            <label className={styles.label}>Agendas: {agenda?.index} {agenda?.title}</label>
+            <select className={styles.select} value={agenda?.index} onChange={handleChange}>
+                {agendas.map(({ index, title }) => <option key={index} value={index}>{index} {title}</option>)}
             </select>
         </div>
     )

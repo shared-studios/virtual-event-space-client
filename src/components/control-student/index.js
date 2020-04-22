@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import styles from './styles.module.css'
+import styles from './styles.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchStudents } from '../actions/student'
 
@@ -13,29 +13,26 @@ const StudentControl = () => {
     }, [dispatch])
 
     useEffect(() => {
-        const student = students.filter((student) => student.status === 'current')[0]
+        const student = students.find((student) => student.status === 'current')
         setStudent(student)
     }, [students])
 
-    const handleOnChange = (e) => {
-        const index = e.target.value
-        console.log(index)
-        setStudent(index ? students[index] : '')
+    const handleChange = (e) => {
+        setStudent(students[e.target.value])
+        if (e.target.value) {
+            dispatch({ type: "UPDATE-PUBLISH-STUDENT", payload: students[e.target.value] })
+        } else {
+            dispatch({ type: "UPDATE-PUBLISH-STUDENT", payload: {} })
+        }
     }
 
     return (
-        <div>
+        <div className={styles.student}>
             {console.log('StudentControl')}
-            <label>student: </label>
-            <select
-                value={student?.index}
-                onChange={handleOnChange}
-                name={student}
-            >
+            <label className={styles.label}>Students: {student?.index} {student?.name}</label>
+            <select className={styles.select} value={student?.index} onChange={handleChange}>
                 <option value=''>Select Student...</option>
-                {students.map((student, i) => {
-                    return <option key={i} value={i}> {student.name}</option>
-                })}
+                {students.map(({ index, name }) => <option key={index} value={index}>{name}</option>)}
             </select>
         </div>
     )

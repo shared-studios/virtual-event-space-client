@@ -9,13 +9,16 @@ const Reaction = ({ studentId }) => {
 
     return (
         <div className={styles.reaction}>
-            {emojis.map(({ name, emoji }, i) => {
-                return (
-                    <button key={i} className={styles.button} onClick={() => dispatch(sendReaction(studentId, name))}>
-                        <span role='img' aria-label={name}>{emoji}</span>
-                    </button>
-                )
-            })}
+            <p className={styles.title}>SEND YOUR CONGRATULATIONS!</p>
+            <div className={styles.emojis}>
+                {emojis.map(({ name, emoji }, i) => {
+                    return (
+                        <button key={i} className={styles.emoji} onClick={() => dispatch(sendReaction(studentId, name))}>
+                            <span role='img' aria-label={name}>{emoji}</span>
+                        </button>
+                    )
+                })}
+            </div>
         </div>
     )
 }

@@ -1,22 +1,32 @@
 .reaction {
-    background-color: rgb(4, 56, 134);
     height: max-content;
-    align-self: flex-start;
     margin-top: 1rem;
+    padding: 1rem .5rem;
+    background-color: rgb(4, 56, 134);
+}
+
+.title {
+    width: max-content;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: rgb(214, 170, 42);
+}
+
+.emojis {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     justify-items: center;
 }
 
-.button {
+.emoji {
     background-color: transparent;
     border: none;
     font-size: 2rem;
-    padding: 1rem;
     outline: none;
     cursor: pointer;
 }
 
-.button:active {
+.emoji:active {
     opacity: 50%;
 }

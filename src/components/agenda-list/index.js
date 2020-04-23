@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+import styles from './styles.module.css'
 import Agenda from '../agenda'
 import { useSelector, useDispatch } from 'react-redux'
-import styles from './styles.module.css'
 import { fetchAgenda } from '../actions/agenda'
 
 const AgendaList = () => {
@@ -15,7 +15,9 @@ const AgendaList = () => {
     return (
         <div className={styles.agenda_list}>
             <p className={styles.title}>ORDER OF CEREMONY</p>
-            {agendas.map(({ time, title, status }, i) => <Agenda key={i} time={time} title={title} status={status} />)}
+            <div className={styles.agenda_list_body}>
+                {agendas.map((agenda, i) => <Agenda key={i} agenda={agenda} />)}
+            </div>
         </div>
     )
 }

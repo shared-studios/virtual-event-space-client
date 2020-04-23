@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './styles.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchCurrentStudent, updateReaction } from '../actions/current-student'
-import Reaction from '../reaction'
+import Reaction from '../student-reaction'
 import emojis from '../emojis.json'
 
 const CurrentStudent = () => {
@@ -10,6 +10,8 @@ const CurrentStudent = () => {
     const dispatch = useDispatch()
     const student = useSelector(state => state.current_student)
     const socket = useSelector(state => state.socket)
+    const users = student[emojis[currentTab].name]
+    const usersList = useRef()
 
     useEffect(() => {
         dispatch(fetchCurrentStudent())
@@ -17,6 +19,12 @@ const CurrentStudent = () => {
             dispatch(updateReaction(data))
         })
     }, [dispatch, socket])
+
+    useEffect(() => {
+        if (usersList.current) {
+            usersList.current.scrollTop = usersList.current.scrollHeight
+        }
+    }, [student])
 
     return (
         <React.Fragment>
@@ -36,12 +44,12 @@ const CurrentStudent = () => {
                             )
                         })}
                     </div>
-                    <div className={styles.users}>
-                        {student[emojis[currentTab].name]?.map((user, i) => {
-                            return <span key={i}>{user}{student[emojis[currentTab].name].length !== i + 1 && ', '}</span>
-                        })}
-                    </div>
                 </div>
+                {users && <div className={styles.users} ref={usersList}>
+                    {users.map((user, i) => {
+                        return <span key={i}>{user}{student[emojis[currentTab].name].length !== i + 1 && ', '}</span>
+                    })}
+                </div>}
                 <Reaction studentId={student.index} />
             </div>}
         </React.Fragment>

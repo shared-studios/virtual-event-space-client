@@ -3,7 +3,6 @@ import Header from '../header'
 import Chat from '../chat'
 import CurrentStudent from '../current-student'
 import LiveVideo from '../live-video'
-import CurrentAgenda from '../current-agenda'
 import AgendaList from '../agenda-list'
 import styles from './styles.module.css'
 import Authentication from '../authentication'
@@ -34,7 +33,6 @@ const LandingPage = (props) => {
                     <Header />
                     <AgendaList />
                     <LiveVideo />
-                    {/* <CurrentAgenda /> */}
                     <CurrentStudent />
                     <Chat />
                 </div>

@@ -2,7 +2,8 @@
     grid-row: 2/4;
     grid-column: 3;
     margin-left: 1rem;
-    /* width: 22rem; */
+    display: grid;
+    grid-template-rows: min-content auto min-content;
 }
 
 .student {
@@ -10,7 +11,7 @@
     color: rgb(214, 170, 42);
     display: grid;
     justify-items: flex-start;
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 2rem 1rem 1rem 1rem;
 }
 
 .image {
@@ -70,11 +71,12 @@
 }
 
 .users {
-    margin-top: 1rem;
+    padding: 0rem 1.5rem 1rem 1.5rem;
     overflow: scroll;
-    max-height: 7rem;
+    background-color: rgb(4, 56, 134);
     color: rgb(255, 255, 255);
-    box-shadow: inset 0px 0px 50px -20px rgba(0, 0, 0, 0.219);
     font-size: 0.9rem;
     font-weight: 400;
+    box-shadow: inset 0px 0px 50px -20px rgba(0, 0, 0, 0.219);
+    height: auto;
 }

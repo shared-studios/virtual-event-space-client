@@ -34,7 +34,7 @@ const LandingPage = (props) => {
                     <Header />
                     <AgendaList />
                     <LiveVideo />
-                    <CurrentAgenda />
+                    {/* <CurrentAgenda /> */}
                     <CurrentStudent />
                     <Chat />
                 </div>

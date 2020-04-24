@@ -31,7 +31,7 @@ const CurrentStudent = () => {
             {console.log('CurrentStudent')}
             {student.index && <div className={styles.current_student}>
                 <div className={styles.student}>
-                    <img className={styles.image} alt='student' src={student.image} />
+                    <img className={styles.image} src={`https://${student.event_id}.s3.us-east-2.amazonaws.com/${student.name}.jpg`} alt='student' />
                     <p className={styles.name}>{student.name}</p>
                     <p className={styles.degree}>{student.degree}</p>
                     <div className={styles.reactions}>

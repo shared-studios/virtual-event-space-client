@@ -1,25 +1,28 @@
 
 export default (state = [], { type, payload }) => {
     switch (type) {
-
         case "FETCH-MESSAGES_FULFILLED": {
-            return payload.data
+            return payload.data.reverse()
         } case "POST-MESSAGE_FULFILLED": {
-            state.push(payload.data)
-            return [...state]
+            return [...state, payload.data].reverse()
         }
         case "NEW-MESSAGE": {
-            if (!payload.approved) {
-                const newState = state.filter((message) => message.time_stamp !== payload.time_stamp)
-                return [...newState]
+            if (!payload.approved && payload.user_id !== window.config.id) {
+                return state.filter((message) => message.time_stamp !== payload.time_stamp)
             }
 
             const found = state.find((message) => message.time_stamp === payload.time_stamp)
-            if (!found && payload.approved) {
-                state.push(payload)
-                return [...state]
+            if (found) {
+                return state.map((message) => {
+                    if (message.time_stamp === payload.time_stamp) {
+                        return payload
+                    }
+                    return message
+                })
             }
-
+            if (!found) {
+                return [payload, ...state]
+            }
             return [...state]
         }
         default: {

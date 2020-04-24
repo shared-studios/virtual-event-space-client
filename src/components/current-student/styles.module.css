@@ -47,12 +47,12 @@
     justify-items: center;
     align-items: center;
     padding: 0.5rem;
-    border-radius: 1rem;
+    border-bottom: 0.2rem solid rgba(190, 152, 65, 0);
     cursor: pointer;
 }
 
 .current_tab {
-    background-color: rgba(255, 255, 255, 0.377);
+    border-bottom: 0.2rem solid rgb(190, 153, 65);
 }
 
 .emoji {
@@ -72,7 +72,7 @@
 
 .users {
     padding: 0rem 1.5rem 1rem 1.5rem;
-    overflow: scroll;
+    overflow-y: auto;
     background-color: rgb(4, 56, 134);
     color: rgb(255, 255, 255);
     font-size: 0.9rem;

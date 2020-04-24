@@ -5,7 +5,7 @@ export default (state = null, { type, payload }) => {
     }
     switch (type) {
         case "ERROR": {
-            return payload.response.data
+            return payload
         }
         default: {
             return state

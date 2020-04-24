@@ -6,6 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700,900&display=swap" rel="stylesheet">
   <title>Virtual Workspaces</title>
+  <script>
+    let isScrolling
+    handleScroll = (e) => {
+      if (e.target.classList) {
+        window.clearTimeout(isScrolling)
+
+        if (e.target.classList.contains("show-scrollbar") === false) {
+          e.target.classList.add("show-scrollbar")
+        }
+
+        isScrolling = setTimeout(function () {
+          if (e.target.classList.contains("show-scrollbar") === true) {
+            e.target.classList.remove("show-scrollbar")
+          }
+        }, 800)
+      }
+    }
+    window.addEventListener('scroll', this.handleScroll, true)
+  </script>
+  <style>
+    .show-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #acacacab;
+    }
+  </style>
 </head>
 
 <body>

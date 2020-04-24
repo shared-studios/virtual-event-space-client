@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchCurrentStudent, updateReaction } from '../actions/current-student'
 import Reaction from '../student-reaction'
 import emojis from '../emojis.json'
+import { useTransition, animated } from 'react-spring'
 
 const CurrentStudent = () => {
     const [currentTab, setCurrentTab] = useState(0)
@@ -12,6 +13,12 @@ const CurrentStudent = () => {
     const socket = useSelector(state => state.socket)
     const users = student[emojis[currentTab].name]
     const usersList = useRef()
+
+    const transitions = useTransition(student, item => item.index, {
+        from: { opacity: 0, transform: "scale(1.1)" },
+        enter: { opacity: 1, transform: "scale(1)" },
+        leave: { opacity: 0, transform: "scale(0.9)" }
+    })
 
     useEffect(() => {
         dispatch(fetchCurrentStudent())
@@ -26,33 +33,28 @@ const CurrentStudent = () => {
         }
     }, [student])
 
-    return (
-        <React.Fragment>
-            {console.log('CurrentStudent')}
-            {student.index && <div className={styles.current_student}>
-                <div className={styles.student}>
-                    <img className={styles.image} src={`https://${student.event_id}.s3.us-east-2.amazonaws.com/${student.name}.jpg`} alt='student' />
-                    <p className={styles.name}>{student.name}</p>
-                    <p className={styles.degree}>{student.degree}</p>
-                    <div className={styles.reactions}>
-                        {emojis.map(({ name, emoji }, i) => {
-                            return (
-                                <div key={i} className={`${styles.reaction} ${i === currentTab && styles.current_tab}`} onClick={() => setCurrentTab(i)}>
-                                    <span className={styles.emoji} role='img' aria-label={name}>{emoji}</span>
-                                    <p className={styles.count}>{student[name]?.length || 0}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-                {users && <div className={styles.users} ref={usersList}>
-                    {users.map((user, i) => {
-                        return <span key={i}>{user}{student[emojis[currentTab].name].length !== i + 1 && ', '}</span>
+    return transitions.map(({ item: { event_id, index, name, degree }, key, props }) =>
+        index && <div className={styles.current_student}>
+            <animated.div key={key} style={props} className={styles.student}>
+                <img className={styles.image} src={`https://${event_id}.s3.us-east-2.amazonaws.com/${name}.jpg`} alt='student' />
+                <p className={styles.name}>{name}</p>
+                <p className={styles.degree}>{degree}</p>
+                <div className={styles.reactions}>
+                    {emojis.map(({ name, emoji }, i) => {
+                        return (
+                            <div key={i} className={`${styles.reaction} ${i === currentTab && styles.current_tab}`} onClick={() => setCurrentTab(i)}>
+                                <span className={styles.emoji} role='img' aria-label={name}>{emoji}</span>
+                                <p className={styles.count}>{student[name]?.length || 0}</p>
+                            </div>
+                        )
                     })}
-                </div>}
-                <Reaction studentId={student.index} />
+                </div>
+            </animated.div>
+            {users && <div className={styles.users} ref={usersList}>
+                {users.map((user, i) => <span key={i}>{user}{users.length !== i + 1 && ', '}</span>)}
             </div>}
-        </React.Fragment>
+            <Reaction studentId={index} />
+        </div>
     )
 }
 

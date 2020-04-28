@@ -32,6 +32,6 @@
 }
 
 .emoji:disabled {
-    opacity: 70%;
+    opacity: 0.9;
     cursor: not-allowed;
 }

@@ -49,9 +49,18 @@
     padding: 0.5rem;
     border-bottom: 0.2rem solid rgba(190, 152, 65, 0);
     cursor: pointer;
+    margin: 0.1rem;
+}
+
+.reaction:hover {
+    border-bottom: 0.2rem solid rgba(190, 152, 65, 0.425);
 }
 
 .current_tab {
+    border-bottom: 0.2rem solid rgb(190, 153, 65);
+}
+
+.current_tab:hover {
     border-bottom: 0.2rem solid rgb(190, 153, 65);
 }
 

@@ -5,6 +5,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     overflow-x: none;
+    opacity: 1;
 }
 
 html, body, #root {
@@ -14,10 +15,6 @@ html, body, #root {
 
 button {
     cursor: pointer;
-}
-
-button:disabled {
-    cursor: not-allowed;
 }
 
 ::-webkit-scrollbar {

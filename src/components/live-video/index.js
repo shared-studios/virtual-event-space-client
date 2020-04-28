@@ -14,7 +14,6 @@ const LiveVideo = () => {
                 allow="autoplay"
                 allowFullScreen
             /> */}
-            {/* <iframe src="//iframe.dacast.com/b/160241/c/533670" width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> */}
         </div>
 
     )

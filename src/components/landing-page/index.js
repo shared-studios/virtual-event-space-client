@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import Header from '../header'
 import Chat from '../chat'
-import CurrentStudent from '../current-student'
+import Error from '../error'
+import Header from '../header'
+import Socket from '../socket'
 import LiveVideo from '../live-video'
 import AgendaList from '../agenda-list'
 import styles from './styles.module.css'
+import CurrentStudent from '../current-student'
 import Authentication from '../authentication'
-import Error from '../error'
-import Socket from '../socket'
+
 
 import { useSelector, useDispatch } from 'react-redux'
 import { onPublish } from '../actions/publish'

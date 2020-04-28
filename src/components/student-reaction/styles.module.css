@@ -30,3 +30,8 @@
 .emoji:active {
     opacity: 50%;
 }
+
+.emoji:disabled {
+    opacity: 70%;
+    cursor: not-allowed;
+}

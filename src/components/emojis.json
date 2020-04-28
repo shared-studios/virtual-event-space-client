@@ -1,42 +1,42 @@
 [
     {
-        "name": "heart",
-        "emoji": "♥️"
-    },
-    {
-        "name": "celebrate",
+        "type": "celebrate",
         "emoji": "🎉"
     },
     {
-        "name": "thumbs_up",
+        "type": "heart",
+        "emoji": "♥️"
+    },
+    {
+        "type": "heart_face",
         "emoji": "😍"
     },
     {
-        "name": "thumbs_up",
+        "type": "thumbs_up",
         "emoji": "👍"
     },
     {
-        "name": "thumbs_up",
+        "type": "one_hundred",
         "emoji": "💯"
     },
     {
-        "name": "thumbs_up",
+        "type": "graduation_cap",
         "emoji": "🎓"
     },
     {
-        "name": "thumbs_up",
+        "type": "women_student",
         "emoji": "👩‍🎓"
     },
     {
-        "name": "thumbs_up",
+        "type": "men_student",
         "emoji": "👨‍🎓"
     },
     {
-        "name": "thumbs_up",
+        "type": "hands_rased",
         "emoji": "🙌"
     },
     {
-        "name": "thumbs_up",
+        "type": "party_face",
         "emoji": "🥳"
     }
 ]

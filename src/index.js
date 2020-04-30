@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from "react-redux"
 import store from "./components/store"
 import LandingPage from './components/landing-page'
-import { Route, HashRouter, Switch } from "react-router-dom"
+import { Route, BrowserRouter, Switch } from "react-router-dom"
 import configure from './components/custom-module'
 
 configure({
@@ -15,12 +15,12 @@ configure({
 const App = () => {
     return (
         <Provider store={store}>
-            <HashRouter>
+            <BrowserRouter>
                 <Switch>
                     <Route path="/:event_id/:user_id" exact component={LandingPage} />
                     <Route path="/" component={() => <h1>404</h1>} />
                 </Switch>
-            </HashRouter>
+            </BrowserRouter>
         </Provider>
     )
 }

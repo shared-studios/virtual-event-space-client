@@ -1,0 +1,58 @@
+.comments {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    box-shadow: -7px 0px 34px -21px rgba(0, 0, 0, 0.75);
+    display: grid;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.comment_input {
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    height: 3rem;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-content: center;
+    padding: .4rem 1rem;
+    z-index: 1;
+    border: .09rem solid rgb(0, 0, 0);
+}
+
+.input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: .9rem;
+    justify-self: start;
+    padding-right: .4rem;
+}
+
+.icon {
+    width: 1.7rem;
+    height: 1.7rem;
+    justify-self: end;
+    cursor: pointer;
+}
+
+.icon:active {
+    filter: grayscale(50%);
+}
+
+.comments_list {
+    grid-row: 1/3;
+    grid-column: 1;
+    height: auto;
+    overflow-y: auto;
+    padding: 0rem 0.5rem;
+}

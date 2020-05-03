@@ -1,17 +1,19 @@
 import { combineReducers } from "redux"
 
-import messages from './message-reducer'
+import graduates from './graduates-reducer'
+import comments from './comments-reducer'
 import agendas from './agendas-reducer'
-import current_student from './current-student-reducer'
-import user from './user-reducer'
 import socket from './socket-reducer'
 import errors from './error-reducer'
+import event from './event-reducer'
+import user from './user-reducer'
 
 export default combineReducers({
     user,
+    event,
     errors,
     socket,
     agendas,
-    messages,
-    current_student
+    graduates,
+    comments,
 })

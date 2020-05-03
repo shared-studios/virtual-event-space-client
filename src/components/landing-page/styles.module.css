@@ -1,9 +1,18 @@
 .landing_page {
-    width: 100vw;
+    /* grid-column: 2; */
+    width: max-content;
     height: 100vh;
     display: grid;
-    grid-auto-rows: max-content max-content 1fr;
-    grid-auto-columns: 25% auto min-content;
-    padding: 1rem;
-    overflow: hidden;
+    grid-auto-columns: minmax(auto, 50rem) minmax(auto, 30rem);
+    grid-auto-rows: auto max-content auto;
+    align-items: start;
+}
+
+.graduates_comments {
+    grid-row: 2/4;
+    grid-column: 2;
+    height: 100%;
+    margin-left: 1.5rem;
+    display: grid;
+    grid-auto-rows: max-content auto;
 }

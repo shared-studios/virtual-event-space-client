@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { socket } from '../custom-module'
-import { createSocket } from '../actions/socket'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { onAgenda, onComment, onReaction, onOffset, onError, onDisconnect, onConnect } from '../actions/socket'
 
 const Socket = (props) => {
     const dispatch = useDispatch()
-    const [connected, setConnection] = useState(false)
+    const { connected } = useSelector(state => state.socket)
 
     useEffect(() => {
         const ws = socket()
-        ws.onConnect((e) => {
-            console.log('onConnect:', e)
-            dispatch(createSocket(ws))
-            setConnection(true)
-        })
-
-        ws.onDisconnect((e) => {
-            console.log('onDisconnect:', e)
-        })
-
-        ws.onError((e) => {
-            console.log('onError:', e)
-        })
-
+        ws.onConnect((e) => dispatch(onConnect(ws, e)))
+        ws.onDisconnect((e) => dispatch(onDisconnect(e)))
+        ws.onError((e) => dispatch(onError(e)))
+        ws.on('comment', onAgenda)
+        ws.on('agenda', onComment)
+        ws.on('reaction', onReaction)
+        ws.on('video-offset', onOffset)
     }, [dispatch])
 
     return (

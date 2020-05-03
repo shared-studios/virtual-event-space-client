@@ -5,38 +5,22 @@
     },
     {
         "type": "heart",
-        "emoji": "♥️"
+        "emoji": "💞"
     },
     {
-        "type": "heart_face",
-        "emoji": "😍"
-    },
-    {
-        "type": "thumbs_up",
-        "emoji": "👍"
-    },
-    {
-        "type": "one_hundred",
-        "emoji": "💯"
-    },
-    {
-        "type": "graduation_cap",
-        "emoji": "🎓"
-    },
-    {
-        "type": "women_student",
-        "emoji": "👩‍🎓"
-    },
-    {
-        "type": "men_student",
-        "emoji": "👨‍🎓"
+        "type": "shaman_bottle",
+        "emoji": "🍾"
     },
     {
         "type": "hands_rased",
         "emoji": "🙌"
     },
     {
-        "type": "party_face",
-        "emoji": "🥳"
+        "type": "graduation_cap",
+        "emoji": "🎓"
+    },
+    {
+        "type": "heart_face",
+        "emoji": "😍"
     }
 ]

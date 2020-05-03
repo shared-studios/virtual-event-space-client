@@ -10,8 +10,8 @@ export default (state = {}, { type, payload }) => {
                 state[index] = { message: "request field", index }
                 return { ...state }
             }
-            if (payload?.response?.data) {
-                state[index] = { message: payload.response.data, index }
+            if (payload?.response?.data?.message) {
+                state[index] = { message: payload.response.data.message, index }
                 return { ...state }
             }
             if (payload?.message === "Network Error") {
@@ -21,7 +21,7 @@ export default (state = {}, { type, payload }) => {
                 state[index] = { message: payload.message, index }
                 return { ...state }
             }
-            state[index] = JSON.stringify(payload)
+            state[index] = { message: JSON.stringify(payload), index }
             return { ...state }
         }
         case "REMOVE ERROR": {

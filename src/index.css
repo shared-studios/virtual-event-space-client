@@ -4,13 +4,20 @@
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    overflow-x: none;
-    opacity: 1;
 }
 
 html, body, #root {
     width: 100vw;
     height: 100vh;
+    background-color: rgb(8, 72, 168);
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+#root {
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 button {

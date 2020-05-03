@@ -1,0 +1,57 @@
+[
+    {
+        "id": "0",
+        "time_stamp": "0:0:10",
+        "type": "diploma"
+    },
+    {
+        "id": "1",
+        "time_stamp": "0:0:12",
+        "type": "diploma"
+    },
+    {
+        "id": "2",
+        "time_stamp": "0:0:14",
+        "type": "diploma"
+    },
+    {
+        "id": "3",
+        "time_stamp": "0:0:16",
+        "type": "diploma"
+    },
+    {
+        "id": "4",
+        "time_stamp": "0:0:18",
+        "type": "diploma"
+    },
+    {
+        "id": "5",
+        "time_stamp": "0:0:20",
+        "type": "diploma"
+    },
+    {
+        "id": "6",
+        "time_stamp": "0:0:22",
+        "type": "diploma"
+    },
+    {
+        "id": "7",
+        "time_stamp": "0:0:24",
+        "type": "diploma"
+    },
+    {
+        "id": "8",
+        "time_stamp": "0:0:26",
+        "type": "diploma"
+    },
+    {
+        "id": "9",
+        "time_stamp": "0:0:28",
+        "type": "diploma"
+    },
+    {
+        "id": "10",
+        "time_stamp": "0:0:30",
+        "type": "diploma"
+    }
+]

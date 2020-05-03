@@ -1,30 +1,16 @@
-import React, { useEffect } from 'react';
-import Chat from '../chat'
+import React from 'react';
+import styles from './styles.module.css'
+import AgendasList from '../agendas-list'
+import Graduates from '../graduates-list'
+import Comments from '../comments-list'
 import Error from '../error'
 import Header from '../header'
 import Socket from '../socket'
 import LiveVideo from '../live-video'
-import AgendaList from '../agenda-list'
-import styles from './styles.module.css'
-import CurrentStudent from '../current-student'
 import Authentication from '../authentication'
-
-
-import { useSelector, useDispatch } from 'react-redux'
-import { onPublish } from '../actions/publish'
 
 const LandingPage = (props) => {
     const { event_id, user_id } = props.match.params
-    const socket = useSelector(state => state.socket)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        if (socket) {
-            socket.on('publish', (data) => {
-                dispatch(onPublish(data))
-            })
-        }
-    }, [dispatch, socket])
 
     return (
         <Authentication eventId={event_id} userId={user_id}>
@@ -32,13 +18,15 @@ const LandingPage = (props) => {
                 {console.log('LandingPage')}
                 <div className={styles.landing_page}>
                     <Header />
-                    <AgendaList />
                     <LiveVideo />
-                    <CurrentStudent />
-                    <Chat />
+                    <AgendasList />
+                    <div className={styles.graduates_comments}>
+                        <Graduates />
+                        <Comments />
+                    </div>
                 </div>
             </Socket>
-            <Error />
+            {/* <Error /> */}
         </Authentication>
     )
 }

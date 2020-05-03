@@ -1,0 +1,39 @@
+.agenda {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content auto;
+    margin-bottom: 1rem;
+    color: rgb(0, 0, 0);
+    font-size: 0.9rem;
+}
+
+.time {
+    grid-row: 1;
+    grid-column: 1;
+    margin-right: 1rem;
+    color: rgb(177, 177, 177);
+}
+
+.title {
+    grid-row: 1;
+    grid-column: 2;
+    margin-bottom: 0.2rem;
+}
+
+.description {
+    grid-row: 2;
+    grid-column: 2;
+    font-size: 0.9rem;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+}
+
+.previous {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.current {
+    font-weight: 500;
+}
+
+.next {}

@@ -7,10 +7,10 @@ export default (state = [], { type, payload }) => {
             if (payload) {
                 let foundCurrent = false
                 const agendas = state.map((agenda) => {
-                    if (agenda.index !== payload && !foundCurrent) {
+                    if (agenda.id !== payload && !foundCurrent) {
                         return { ...agenda, status: 'previous' }
                     }
-                    if (agenda.index === payload && !foundCurrent) {
+                    if (agenda.id === payload && !foundCurrent) {
                         foundCurrent = true
                         return { ...agenda, status: 'current' }
                     }

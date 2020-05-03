@@ -3,7 +3,6 @@ import styles from './styles.module.css'
 import AgendasList from '../agendas-list'
 import Graduates from '../graduates-list'
 import Comments from '../comments-list'
-import Error from '../error'
 import Header from '../header'
 import Socket from '../socket'
 import LiveVideo from '../live-video'
@@ -11,7 +10,6 @@ import Authentication from '../authentication'
 
 const LandingPage = (props) => {
     const { event_id, user_id } = props.match.params
-
     return (
         <Authentication eventId={event_id} userId={user_id}>
             <Socket>
@@ -26,7 +24,6 @@ const LandingPage = (props) => {
                     </div>
                 </div>
             </Socket>
-            {/* <Error /> */}
         </Authentication>
     )
 }

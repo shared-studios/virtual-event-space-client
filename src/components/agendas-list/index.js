@@ -18,7 +18,7 @@ const AgendaList = () => {
     return <animated.div style={props} className={styles.agenda_list}>
         <p className={styles.title}>Order of Ceremony</p>
         <div className={styles.agenda_list_body}>
-            {agendas.map((agenda, i) => <AgendaCard key={i} agenda={agenda} />)}
+            {agendas.map((agenda, i) => <AgendaCard key={i} {...agenda} />)}
         </div>
     </animated.div>
 }

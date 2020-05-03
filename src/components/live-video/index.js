@@ -2,18 +2,19 @@ import React, { useEffect, useRef } from 'react';
 import styles from './styles.module.css'
 import Vimeo from '@vimeo/player'
 import moment from 'moment'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchGraduate } from '../actions/graduates'
 import timeStamp from '../time-stamps.json'
 
 const LiveVideo = () => {
     const iframe = useRef()
+    const { video_url } = useSelector(state => state.event)
     const dispatch = useDispatch()
 
     useEffect(() => {
         let interval = null
         const options = {
-            url: "https://player.vimeo.com/video/413335387",
+            url: video_url,
             width: 800
         };
 
@@ -45,7 +46,7 @@ const LiveVideo = () => {
                 }
             })
         }
-        player.play()
+        // player.play()
     })
 
     return <div className={styles.live_video} ref={iframe} />

@@ -12,10 +12,10 @@ const Socket = (props) => {
         ws.onConnect((e) => dispatch(onConnect(ws, e)))
         ws.onDisconnect((e) => dispatch(onDisconnect(e)))
         ws.onError((e) => dispatch(onError(e)))
-        ws.on('comment', onAgenda)
-        ws.on('agenda', onComment)
-        ws.on('reaction', onReaction)
-        ws.on('video-offset', onOffset)
+        ws.on('comment', (data) => onComment(onError(data)))
+        ws.on('agenda', (data) => dispatch(onAgenda(data)))
+        ws.on('reaction', (data) => dispatch(onReaction(data)))
+        ws.on('video-offset', (data) => dispatch(onOffset(data)))
     }, [dispatch])
 
     return (

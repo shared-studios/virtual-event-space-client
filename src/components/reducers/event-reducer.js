@@ -5,7 +5,7 @@ export default (state = {}, { type, payload }) => {
         }
         case 'UPDATE-VIDEO-OFFSET': {
             console.log('UPDATE-VIDEO-OFFSET:', payload)
-            return state
+            return { ...state, video_offset: { ...state.video_offset, ...payload } }
         }
         default: {
             return state

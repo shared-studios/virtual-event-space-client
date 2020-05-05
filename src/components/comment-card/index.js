@@ -9,7 +9,7 @@ const Message = ({ msg }) => {
 
     return (
         <div className={styles.message} >
-            <p className={styles.time}>{moment(time_stamp).format('hh:mm A')} {window.config.id === user_id && (approved ? <ApprovedSVG /> : <PendingSVG />)}</p>
+            <div className={styles.time}>{moment(time_stamp).format('hh:mm A')} {window.config.id === user_id && (approved ? <ApprovedSVG /> : <PendingSVG />)}</div>
             <p className={styles.text}><span className={styles.user_name}>{first_name} {last_name.charAt(0)}.: </span>{comment}</p>
             {console.log('message')}
         </div >

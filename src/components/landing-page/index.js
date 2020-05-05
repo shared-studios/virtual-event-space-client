@@ -6,6 +6,7 @@ import Comments from '../comments-list'
 import Header from '../header'
 import Socket from '../socket'
 import LiveVideo from '../live-video'
+import Footer from '../footer'
 import Authentication from '../authentication'
 
 const LandingPage = (props) => {
@@ -22,6 +23,7 @@ const LandingPage = (props) => {
                         <Graduates />
                         <Comments />
                     </div>
+                    <Footer />
                 </div>
             </Socket>
         </Authentication>

@@ -45,6 +45,10 @@
     cursor: pointer;
 }
 
+.icon:hover {
+    cursor: pointer;
+}
+
 .icon:active {
     filter: grayscale(50%);
 }

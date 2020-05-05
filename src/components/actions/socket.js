@@ -26,5 +26,10 @@ export const onAgenda = ({ agenda_id }) => {
 }
 
 export const onOffset = (data) => {
-    return (dispatch) => dispatch({ type: 'UPDATE-VIDEO-OFFSET', payload: data.index })
+    return (dispatch) => dispatch({ type: 'UPDATE-VIDEO-OFFSET', payload: data })
 }
+export const onVideoReaction = (data) => {
+    return (dispatch) => dispatch({ type: 'UPDATE-VIDEO-REACTION', payload: data })
+}
+
+

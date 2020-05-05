@@ -1,57 +1,68 @@
 [
     {
         "id": "0",
-        "time_stamp": "0:0:10",
-        "type": "diploma"
+        "time_stamp": "0:0:0",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "1",
-        "time_stamp": "0:0:12",
-        "type": "diploma"
+        "time_stamp": "0:0:5",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "2",
-        "time_stamp": "0:0:14",
-        "type": "diploma"
+        "time_stamp": "0:0:10",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "3",
-        "time_stamp": "0:0:16",
-        "type": "diploma"
+        "time_stamp": "0:0:15",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "4",
-        "time_stamp": "0:0:18",
-        "type": "diploma"
+        "time_stamp": "0:0:20",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "5",
-        "time_stamp": "0:0:20",
-        "type": "diploma"
+        "time_stamp": "0:0:25",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "6",
-        "time_stamp": "0:0:22",
-        "type": "diploma"
+        "time_stamp": "0:0:30",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "7",
-        "time_stamp": "0:0:24",
-        "type": "diploma"
+        "time_stamp": "0:0:35",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "8",
-        "time_stamp": "0:0:26",
-        "type": "diploma"
+        "time_stamp": "0:0:40",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "9",
-        "time_stamp": "0:0:28",
-        "type": "diploma"
+        "time_stamp": "0:0:45",
+        "type": "diploma",
+        "segment_id": "segment_1"
     },
     {
         "id": "10",
-        "time_stamp": "0:0:30",
-        "type": "diploma"
+        "time_stamp": "0:0:50",
+        "type": "diploma",
+        "segment_id": "segment_1"
     }
 ]

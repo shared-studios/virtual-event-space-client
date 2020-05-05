@@ -24,6 +24,9 @@
     font-size: .8rem;
     font-weight: 300;
     min-width: 3rem;
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
 }
 
 .emoji:active {
@@ -33,4 +36,9 @@
 .emoji:disabled {
     opacity: 0.9;
     cursor: not-allowed;
+}
+
+.emoji_image {
+    width: 1.2rem;
+    margin-right: 0.2rem;
 }

@@ -4,37 +4,39 @@ import Vimeo from '@vimeo/player'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchGraduate } from '../actions/graduates'
+import { sendVideoReaction } from '../actions/event'
 import timeStamp from '../time-stamps.json'
+import clapping from './clapping.png'
+import heart from './heart.png'
+import star_face from './star_face.png'
 
 const LiveVideo = () => {
     const iframe = useRef()
-    const { video_url } = useSelector(state => state.event)
+    const { video_url, video_offset, emojis } = useSelector(state => state.event)
     const dispatch = useDispatch()
 
     useEffect(() => {
         let interval = null
-        const options = {
-            url: video_url,
-            width: 800
-        };
 
-        const player = new Vimeo(iframe.current, options)
+        const player = new Vimeo(iframe.current, { url: video_url, width: 800 })
 
-        player.on('play', () => {
-            interval = setInterval(() => {
-                player.getCurrentTime().then(checkTimeStamp);
-            }, 1000)
-        })
-
+        player.on('play', () => interval = setInterval(() => player.getCurrentTime().then(checkTimeStamp), 1000))
+        player.on('pause', () => clearInterval(interval))
         const checkTimeStamp = (seconds) => {
             const hours = moment.duration(seconds, 'seconds').hours()
             const minute = moment.duration(seconds, 'seconds').minutes()
             const second = moment.duration(seconds, 'seconds').seconds()
             console.log(`${hours}:${minute}:${second}`)
 
-            timeStamp.forEach(({ time_stamp, type, id }, i) => {
-                const itemTimeStamp = Math.round(moment.duration(time_stamp).asSeconds())
+            timeStamp.forEach(({ time_stamp, type, id, segment_id }, i) => {
+                let itemTimeStamp = moment.duration(time_stamp)
                 const currentTimeStamp = Math.round(moment.duration(seconds, 'seconds').asSeconds())
+
+                if (segment_id && video_offset[segment_id]) {
+                    itemTimeStamp.add(video_offset[segment_id], 's')
+                }
+                itemTimeStamp = Math.round(itemTimeStamp.asSeconds())
+
                 if (currentTimeStamp === itemTimeStamp) {
                     if (type === 'diploma') {
                         dispatch(fetchGraduate(id))
@@ -46,10 +48,23 @@ const LiveVideo = () => {
                 }
             })
         }
-        // player.play()
+        player.play()
     })
 
-    return <div className={styles.live_video} ref={iframe} />
+    return <div className={styles.live_video} ref={iframe} >
+        <div className={styles.live_video_reaction}>
+            <button className={styles.emoji} onClick={() => dispatch(sendVideoReaction('clapping'))}>
+                {emojis?.clapping || 0}<img className={styles.emoji_image} alt='' src={clapping} />
+            </button>
+            <button className={styles.emoji} onClick={() => dispatch(sendVideoReaction('heart'))}>
+                {emojis?.heart || 0}<img className={styles.emoji_image} alt='' src={heart} />
+            </button>
+            <button className={styles.emoji} onClick={() => dispatch(sendVideoReaction('star_face'))}>
+                {emojis?.star_face || 0}<img className={styles.emoji_image} alt='' src={star_face} />
+            </button>
+        </div>
+
+    </div>
 }
 
 export default React.memo(LiveVideo)

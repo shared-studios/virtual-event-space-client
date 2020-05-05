@@ -38,8 +38,10 @@
     width: max-content;
     height: max-content;
     font-size: .7rem;
-    color: rgb(255, 255, 255);
-    background-color: rgb(216, 216, 216);
+    color: rgb(0, 0, 0);
+    background-color: rgb(217, 217, 217);
     padding: .1rem .5rem;
     margin-left: 0.5rem;
+    border-radius: 0.3rem;
+    opacity: 0.45;
 }

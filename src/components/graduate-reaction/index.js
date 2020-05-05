@@ -1,30 +1,28 @@
 import React from 'react'
 import styles from './styles.module.css'
 import { sendReaction } from '../actions/graduates'
-import { useSelector, useDispatch } from 'react-redux'
-import emojiList from '../emojis.json'
+import { useDispatch, useSelector } from 'react-redux'
+import emojis from '../emojis'
 
-const Reaction = ({ studentId }) => {
+const Reaction = ({ id }) => {
+    const graduate = useSelector(state => state.graduates[id])
     const dispatch = useDispatch()
-    const emojis = useSelector(state => state.graduates.emojis)
-    const user = useSelector(state => state.user)
 
     return (
         <div className={styles.reaction}>
             <div className={styles.emojis}>
-                {emojiList.map(({ type, emoji }, i) => {
+                {console.log('Reaction', graduate)}
+                {emojis.list.map((type, i) => {
                     return (
                         <button
                             key={i}
                             className={styles.emoji}
-                            onClick={() => dispatch(sendReaction(studentId, type))}
-                            disabled={emojis?.[type]?.[user.id]}
-                        >
-                            <span role='img' aria-label={type}>{emoji} {0}</span>
+                            onClick={() => dispatch(sendReaction(graduate.id, type))}
+                            disabled={graduate?.[type]?.clicked || false}>
+                            <img className={styles.emoji_image} alt={type} src={emojis[type]} />{graduate?.[type]?.count || 0}
                         </button>
                     )
                 })}
-                {console.log('Reaction')}
             </div>
         </div>
     )

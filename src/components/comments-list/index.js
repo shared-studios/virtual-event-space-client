@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.css'
 import Comment from '../comment-card'
-import send from './send.svg'
+import Message from './message-svg'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchComments, postComment } from '../actions/comments'
 
 const CommentsList = () => {
@@ -25,18 +25,6 @@ const CommentsList = () => {
         chatInput.current.addEventListener("keyup", onEnter)
     }, [dispatch])
 
-    const handleSendComment = () => {
-        if (chatInput.current.value) {
-            dispatch(postComment(chatInput.current.value))
-            chatInput.current.value = ''
-        }
-        chatInput.current.focus()
-    }
-
-    useEffect(() => {
-        commentsList.current.scrollTop = 0
-    }, [comments])
-
     return (
         <div className={styles.comments}>
             <div className={styles.comment_input}>
@@ -45,7 +33,7 @@ const CommentsList = () => {
                     className={styles.input}
                     placeholder="Add a public comment here..."
                 />
-                <img alt='' src={send} className={styles.icon} onClick={handleSendComment} />
+                <Message className={styles.icon} />
             </div>
             <div className={styles.comments_list} ref={commentsList}>
                 {comments.map((comment, i) => <Comment key={i} msg={comment} />)}

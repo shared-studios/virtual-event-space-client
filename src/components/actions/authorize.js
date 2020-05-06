@@ -6,6 +6,6 @@ export const authorizeUser = (event_id, user_id) => {
             dispatch({ type: 'FETCH-USER_FULFILLED', payload: { token, ...user } })
             dispatch({ type: 'FETCH-EVENT_FULFILLED', payload: event })
         }).catch((error) => {
-            dispatch({ type: 'ERROR', payload: error })
+            dispatch({ type: 'UNAUTHORIZED', payload: error })
         })
 }

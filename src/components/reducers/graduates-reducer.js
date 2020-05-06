@@ -1,6 +1,9 @@
 
 export default (state = {}, { type, payload }) => {
     switch (type) {
+        case 'EMPTY-GRADUATE': {
+            return {}
+        }
         case "FETCH-GRADUATE_FULFILLED": {
             const { id } = payload.data
             return { ...state, [id]: { ...payload.data } }

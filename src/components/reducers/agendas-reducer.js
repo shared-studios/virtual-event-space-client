@@ -4,13 +4,14 @@ export default (state = [], { type, payload }) => {
             return payload.data
         }
         case "UPDATE-CURRENT-AGENDA": {
-            if (payload) {
+            const { agenda_id } = payload
+            if (agenda_id) {
                 let foundCurrent = false
                 const agendas = state.map((agenda) => {
-                    if (agenda.id !== payload && !foundCurrent) {
+                    if (agenda.id !== agenda_id && !foundCurrent) {
                         return { ...agenda, status: 'previous' }
                     }
-                    if (agenda.id === payload && !foundCurrent) {
+                    if (agenda.id === agenda_id && !foundCurrent) {
                         foundCurrent = true
                         return { ...agenda, status: 'current' }
                     }

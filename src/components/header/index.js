@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <div className={styles.header}>
-            {console.log('Header', event)}
+            {console.log('Header')}
             <img className={styles.logo} alt='logo' src={`${event.image_link}/logo.png`} />
             <p className={styles.title}>{event.title}</p>
             <p className={styles.data}>{moment(event.date, 'MM/DD/YYYY').format('dddd, Do of MMMM YYYY').toUpperCase()}</p>

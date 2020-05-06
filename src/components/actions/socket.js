@@ -3,33 +3,22 @@ export const onConnect = (socket) => {
     return (dispatch) => dispatch({ type: 'SOCKET-CONNECTED', payload: socket })
 }
 
-export const onDisconnect = (e) => {
-    console.log('onDisconnect:', e)
-    return (dispatch) => dispatch({ type: 'SOCKET-DISCONNECTED', payload: e })
-}
-
 export const onError = (e) => {
     console.log('onError:', e)
     return (dispatch) => dispatch({ type: 'ERROR', payload: "Network error" })
 }
 
-export const onReaction = (data) => {
-    return (dispatch) => dispatch({ type: 'UPDATE-GRADUATE-REACTION', payload: data })
-}
-
-export const onComment = (data) => {
-    return (dispatch) => dispatch({ type: 'UPDATE-COMMENT', payload: data })
-}
-
-export const onAgenda = ({ agenda_id }) => {
-    return (dispatch) => dispatch({ type: 'UPDATE-CURRENT-AGENDA', payload: agenda_id })
-}
-
-export const onOffset = (data) => {
-    return (dispatch) => dispatch({ type: 'UPDATE-VIDEO-OFFSET', payload: data })
-}
-export const onVideoReaction = (data) => {
-    return (dispatch) => dispatch({ type: 'UPDATE-VIDEO-REACTION', payload: data })
+export const onMessage = (e) => {
+    console.log('onMessage:', e)
+    return (dispatch) => {
+        const { data, action } = JSON.parse(e.data)
+        if (action === 'comment') dispatch({ type: 'UPDATE-COMMENT', payload: data })
+        if (action === 'agenda') dispatch({ type: 'UPDATE-CURRENT-AGENDA', payload: data })
+        if (action === 'graduate-reaction') dispatch({ type: 'UPDATE-GRADUATE-REACTION', payload: data })
+        if (action === 'video-offset') dispatch({ type: 'UPDATE-VIDEO-OFFSET', payload: data })
+        if (action === 'video-reaction') dispatch({ type: 'UPDATE-VIDEO-REACTION', payload: data })
+        if (action === 'viewers') dispatch({ type: 'UPDATE-EVENT-VIEWER', payload: data })
+    }
 }
 
 

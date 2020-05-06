@@ -7,6 +7,7 @@ import LandingPage from './components/landing-page'
 import { Route, BrowserRouter, Switch } from "react-router-dom"
 import configure from './components/custom-module'
 import Error from './components/error'
+import Authentication from './components/authentication'
 
 configure({
     api_url: 'https://95zj2rj7ng.execute-api.us-east-2.amazonaws.com/Dev',
@@ -18,7 +19,7 @@ const App = () => {
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
-                    <Route path="/:event_id/:user_id" exact component={LandingPage} />
+                    <Authentication path="/:event_id/:user_id" exact component={LandingPage} />
                     <Route path="/" component={() => <h1>404</h1>} />
                 </Switch>
             </BrowserRouter>

@@ -7,26 +7,22 @@ import Header from '../header'
 import Socket from '../socket'
 import LiveVideo from '../live-video'
 import Footer from '../footer'
-import Authentication from '../authentication'
 
-const LandingPage = (props) => {
-    const { event_id, user_id } = props.match.params
+const LandingPage = () => {
     return (
-        <Authentication eventId={event_id} userId={user_id}>
-            <Socket>
-                {console.log('LandingPage')}
-                <div className={styles.landing_page}>
-                    <Header />
-                    <LiveVideo />
-                    <AgendasList />
-                    <div className={styles.graduates_comments}>
-                        <Graduates />
-                        <Comments />
-                    </div>
-                    <Footer />
+        <Socket>
+            {console.log('LandingPage')}
+            <div className={styles.landing_page}>
+                <Header />
+                <LiveVideo />
+                <AgendasList />
+                <div className={styles.graduates_comments}>
+                    <Graduates />
+                    <Comments />
                 </div>
-            </Socket>
-        </Authentication>
+                <Footer />
+            </div>
+        </Socket>
     )
 }
 

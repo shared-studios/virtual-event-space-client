@@ -36,7 +36,7 @@ const CommentsList = () => {
                 <Message className={styles.icon} />
             </div>
             <div className={styles.comments_list} ref={commentsList}>
-                {comments.map((comment, i) => <Comment key={i} msg={comment} />)}
+                {comments.map((comment, i) => <Comment key={i} {...comment} />)}
             </div>
             {console.log('Comments')}
         </div>

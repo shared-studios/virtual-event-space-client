@@ -6,7 +6,7 @@ import { fetchAgendas } from '../actions/agendas'
 import { useSpring, animated } from 'react-spring'
 
 const AgendaList = () => {
-    const agendas = useSelector(state => state.agendas)
+    const agendas = useSelector(state => state.agenda.agendas)
     const dispatch = useDispatch()
     const props = useSpring({
         to: { opacity: 1 },

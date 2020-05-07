@@ -2,7 +2,7 @@ import { combineReducers } from "redux"
 
 import graduates from './graduates-reducer'
 import comments from './comments-reducer'
-import agendas from './agendas-reducer'
+import agenda from './agendas-reducer'
 import socket from './socket-reducer'
 import errors from './error-reducer'
 import event from './event-reducer'
@@ -13,7 +13,7 @@ export default combineReducers({
     event,
     errors,
     socket,
-    agendas,
+    agenda,
     graduates,
     comments,
 })

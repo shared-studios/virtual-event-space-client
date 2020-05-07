@@ -1,4 +1,5 @@
 import { sendReaction } from './graduates'
+import { fetchAgenda } from './agendas'
 import emojis from '../emojis'
 
 export const onConnect = (socket) => {
@@ -16,7 +17,7 @@ export const onMessage = ({ data: message }) => {
     return (dispatch) => {
         const { data, action } = JSON.parse(message)
         if (action === 'comment') dispatch({ type: 'UPDATE-COMMENT', payload: data })
-        if (action === 'agenda') dispatch({ type: 'UPDATE-CURRENT-AGENDA', payload: data })
+        if (action === 'agenda') dispatch(fetchAgenda(data))
         if (action === 'graduate-reaction') dispatch({ type: 'UPDATE-GRADUATE-REACTION', payload: data })
         if (action === 'video-offset') dispatch({ type: 'UPDATE-VIDEO-OFFSET', payload: data })
         if (action === 'video-reaction') dispatch({ type: 'UPDATE-VIDEO-REACTION', payload: data })
@@ -24,5 +25,3 @@ export const onMessage = ({ data: message }) => {
         if (action === 'trigger-emojis') emojis.list.forEach((type) => dispatch(sendReaction(data, type)))
     }
 }
-
-

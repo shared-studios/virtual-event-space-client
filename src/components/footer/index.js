@@ -11,7 +11,7 @@ const Footer = () => {
         <div className={styles.footer}>
             {console.log('Footer')}
             <p className={styles.powered_by}>Powered By <img className={styles.logo} alt='logo' src={logo} /></p>
-            {copyright && <p className={styles.copyright}>©{copyright}</p>}
+            {copyright && <p className={styles.copyright}>© {copyright}</p>}
             <img className={styles.chat_with_us} alt='chat with us' src={chatWithUs} />
         </div>
     )

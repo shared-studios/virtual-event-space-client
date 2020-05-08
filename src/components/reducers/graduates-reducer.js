@@ -8,7 +8,6 @@ export default (state = {}, { type, payload }) => {
             const { id } = payload.data
             return { ...state, [id]: { ...payload.data } }
         }
-
         case "GRADUATE-REACTION_FULFILLED": {
             const { graduate_id: id, type } = payload.data
             if (state[id]) {

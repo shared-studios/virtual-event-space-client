@@ -8,7 +8,7 @@ const DiplomaCard = (props) => {
     const { first_name, last_name, degree, id, image_link } = props
     const prop = useSpring({
         from: { opacity: 0, height: '0px', transform: 'translateY(-100%)' },
-        to: { opacity: 1, height: '126.59px', transform: 'translateY(0%)' }
+        to: { opacity: 1, height: '126px', transform: 'translateY(0%)' }
     })
 
     return <animated.div style={prop} className={styles.diploma_card}>

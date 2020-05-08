@@ -12,7 +12,7 @@ const Header = () => {
             <img className={styles.logo} alt='logo' src={`${event.image_link}/logo.png`} />
             <p className={styles.title}>{event.title}</p>
             <p className={styles.data}>{moment(event.date, 'MM/DD/YYYY').format('dddd, Do of MMMM YYYY').toUpperCase()}</p>
-            {/* <img className={styles.degree_banner} alt='degree banner' src={logo} /> */}
+            <img className={styles.banner} alt='degree banner' src={`${event.image_link}/banner.png`} />
         </div>
     )
 }

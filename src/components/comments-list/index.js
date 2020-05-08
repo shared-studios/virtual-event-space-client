@@ -27,18 +27,14 @@ const CommentsList = () => {
 
     return (
         <div className={styles.comments}>
+            {console.log('Comments')}
             <div className={styles.comment_input}>
-                <input
-                    ref={chatInput}
-                    className={styles.input}
-                    placeholder="Add a public comment here..."
-                />
+                <input ref={chatInput} className={styles.input} placeholder="Add a public comment here..." />
                 <Message className={styles.icon} />
             </div>
             <div className={styles.comments_list} ref={commentsList}>
                 {comments.map((comment, i) => <Comment key={i} {...comment} />)}
             </div>
-            {console.log('Comments')}
         </div>
     )
 }

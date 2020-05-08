@@ -7,14 +7,15 @@ export default (state = [], { type, payload }) => {
             return [payload.data, ...state]
         }
         case "UPDATE-COMMENT": {
-            if (!payload.approved && payload.user_id !== window.config.user_id) {
-                return state.filter(({ time_stamp }) => time_stamp !== payload.time_stamp)
+            const { status, user_id, time_stamp } = payload
+            if (status === 'rejected' && user_id !== window.config.user_id) {
+                return state.filter(({ time_stamp: time }) => time !== time_stamp)
             }
 
-            const found = state.find(({ time_stamp }) => time_stamp === payload.time_stamp)
+            const found = state.find(({ time_stamp: time }) => time === time_stamp)
             if (found) {
                 return state.map((comment) => {
-                    if (comment.time_stamp === payload.time_stamp) {
+                    if (comment.time_stamp === time_stamp) {
                         return payload
                     }
                     return comment

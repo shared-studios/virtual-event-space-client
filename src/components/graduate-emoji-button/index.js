@@ -6,7 +6,7 @@ import { useTransition, animated, config } from 'react-spring'
 import emojis from '../emojis'
 
 const EmojiButton = ({ id, type }) => {
-    const graduate = useSelector(state => state.graduates[id]) || 0
+    const graduate = useSelector(state => state.graduates[id])
     const count = graduate?.[type]?.count || 0
     const [clicked, setClicked] = useState(graduate?.[type]?.clicked || false)
     const dispatch = useDispatch()

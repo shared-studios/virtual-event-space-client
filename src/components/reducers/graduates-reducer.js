@@ -8,30 +8,25 @@ export default (state = {}, { type, payload }) => {
             const { id } = payload.data
             return { ...state, [id]: { ...payload.data } }
         }
+
         case "GRADUATE-REACTION_FULFILLED": {
             const { graduate_id: id, type } = payload.data
             if (state[id]) {
-                if (!state[id][type]) {
-                    state[id][type] = { clicked: true, count: 0 }
-                }
+                if (!state[id][type]) state[id][type] = { clicked: true, count: 0 }
                 state[id][type].clicked = true
                 state[id][type].count++
-                console.log(state[id][type])
                 return { ...state, [id]: { ...state[id] } }
             }
-            return state
+            return { ...state }
         }
         case 'UPDATE-GRADUATE-REACTION': {
             const { graduate_id: id, type } = payload
             if (state[id]) {
-                if (!state[id][type]) {
-                    state[id][type] = { clicked: false, count: 0 }
-                }
-                state[id][type].clicked = false
+                if (!state[id][type]) state[id][type] = { clicked: false, count: 0 }
                 state[id][type].count++
                 return { ...state, [id]: { ...state[id] } }
             }
-            return state
+            return { ...state }
         }
         default: {
             return state

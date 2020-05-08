@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css'
 import Vimeo from '@vimeo/player'
 import moment from 'moment'
@@ -20,51 +20,42 @@ const LiveVideo = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        console.log('video useEffect')
         let interval = null
-
         const player = new Vimeo(iframe.current, { url: video_url, width: 800 })
-        player.on('play', () => interval = setInterval(() => player.getCurrentTime().then(checkTimeStamp), 1000))
-        player.on('pause', () => clearInterval(interval))
-        const checkTimeStamp = (seconds) => {
-            // const hours = moment.duration(seconds, 'seconds').hours()
-            // const minute = moment.duration(seconds, 'seconds').minutes()
-            // const second = moment.duration(seconds, 'seconds').seconds()
-            // console.log(`${hours}:${minute}:${second}`)
-
-            timeStamp.forEach(({ time_stamp, type, id, segment_id }, i) => {
-                let itemTimeStamp = moment.duration(time_stamp)
-                const currentTimeStamp = Math.round(moment.duration(seconds, 'seconds').asSeconds())
-                let segmentStarted = true
-                if (segment_id && video_offset[segment_id] && video_offset[segment_id] > 0) {
-                    itemTimeStamp.add(video_offset[segment_id], 's')
-                    // const hours = itemTimeStamp.hours()
-                    // const minute = itemTimeStamp.minutes()
-                    // const second = itemTimeStamp.seconds()
-                    // console.log({ id, segment_id, video_offset: video_offset[segment_id], time: `${hours}:${minute}:${second}` })
-                    console.log('segment started:', segmentStarted)
-                } else {
-                    segmentStarted = false
-                    console.log('segment started:', segmentStarted)
-                }
-
-                itemTimeStamp = Math.round(itemTimeStamp.asSeconds())
-
-                if (segmentStarted && currentTimeStamp === itemTimeStamp) {
-                    if (type === 'diploma') dispatch(fetchGraduate(id))
-                    if (type === 'diploma-over') {
-                        clearInterval(interval)
-                        console.log('Interval cleared')
-                        setTimeout(() => dispatch({ type: 'EMPTY-GRADUATE' }), 8000);
-                    }
-                    // console.log('item:', { time_stamp, type, id })
-                }
-            })
-        }
         // player.play()
+        player.on('pause', () => clearInterval(interval))
+        interval = setInterval(() => player.getCurrentTime().then(checkTimeStamp), 1000)
+
+        const checkTimeStamp = (seconds) => timeStamp.forEach(({ time_stamp, type, id, video_id }) => {
+            const currentTimeStamp = Math.round(moment.duration(seconds, 'seconds').asSeconds())
+            const video = video_offset.find(({ id }) => id === video_id)
+            let itemTimeStamp = moment.duration(time_stamp)
+            let preRecordedVideoStarted = false
+
+            if (video && video.duration > 0) {
+                itemTimeStamp.add(video.duration, 's')
+                preRecordedVideoStarted = true
+            }
+
+            console.log('Pre Recorded Video Started:', preRecordedVideoStarted)
+            itemTimeStamp = Math.round(itemTimeStamp.asSeconds())
+
+            if (preRecordedVideoStarted && currentTimeStamp === itemTimeStamp) {
+                if (type === 'diploma') dispatch(fetchGraduate(id))
+                if (type === 'diploma-over') {
+                    clearInterval(interval)
+                    console.log('Interval cleared')
+                    setTimeout(() => dispatch({ type: 'EMPTY-GRADUATE' }), 8000)
+                }
+                console.log('item:', { time_stamp, type, id })
+            }
+        })
         return () => clearInterval(interval)
     }, [dispatch, video_offset, video_url])
 
     return <div className={styles.live_video} ref={iframe} >
+        {console.log('video')}
         <div className={styles.viewers}><Eye /> {viewers}</div>
         {Object.keys(graduates).length === 0 && <VideoEmojis emojis={['clapping', 'heart', 'star_face']} />}
     </div>
@@ -74,23 +65,29 @@ export default React.memo(LiveVideo)
 
 
 const VideoEmojis = ({ emojis: list }) => {
-    const current = useSelector(state => state.agenda.current)
+    const current = useSelector(state => state.agendas.current)
     return <div className={styles.live_video_reaction}>
         {list.map((emoji, i) => <VideoEmojiButton key={i} current={current} emoji={emoji} />)}
     </div>
 }
 
-const VideoEmojiButton = ({ current, emoji: type }) => {
-    const agendas = useSelector(state => state.agenda.agendas[current])
-    const emoji = agendas?.[type]
+const VideoEmojiButton = ({ current, emoji }) => {
+    const agendas = useSelector(state => state.agendas.agendas[current])
+    const count = agendas?.[emoji]?.count || 0
+    const [clicked, setClicked] = useState()
     const dispatch = useDispatch()
     const images = { clapping, heart, star_face }
 
-    return <button
-        className={styles.emoji}
-        onClick={() => dispatch(sendVideoReaction(current, type))}
-        disabled={emoji?.clicked || false}>
-        {emoji?.count || 0}<img className={styles.emoji_image} alt='' src={images[type]} />
-    </button>
+    const onClick = () => {
+        dispatch(sendVideoReaction(current, emoji))
+        setClicked(true)
+    }
+
+    return (
+        <button className={styles.emoji} onClick={onClick} disabled={agendas?.[emoji]?.clicked || clicked}>
+            {count}
+            <img className={styles.emoji_image} alt='' src={images[emoji]} />
+        </button>
+    )
 }
 

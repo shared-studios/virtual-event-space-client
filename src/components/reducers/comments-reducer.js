@@ -7,7 +7,7 @@ export default (state = [], { type, payload }) => {
             return [payload.data, ...state]
         }
         case "UPDATE-COMMENT": {
-            if (!payload.approved && payload.user_id !== window.config.id) {
+            if (!payload.approved && payload.user_id !== window.config.user_id) {
                 return state.filter(({ time_stamp }) => time_stamp !== payload.time_stamp)
             }
 

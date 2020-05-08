@@ -35,6 +35,7 @@ export default (state = { current: '0', agendas: [] }, { type, payload }) => {
             state.agendas = state.agendas.map((agenda) => {
                 if (agenda.id === agenda_id) {
                     if (!agenda[emoji]) agenda[emoji] = { clicked: true, count: 0 }
+                    agenda[emoji].clicked = true
                     agenda[emoji].count++
                     return { ...agenda }
                 }

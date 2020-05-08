@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.css'
 import { sendReaction } from '../actions/graduates'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ import emojis from '../emojis'
 const EmojiButton = ({ id, type }) => {
     const graduate = useSelector(state => state.graduates[id]) || 0
     const count = graduate?.[type]?.count || 0
-    const clicked = graduate?.[type]?.clicked || false
+    const [clicked, setClicked] = useState(graduate?.[type]?.clicked || false)
     const dispatch = useDispatch()
     const transitions = useTransition(count, null, {
         from: { position: 'static', opacity: 1, transform: 'translateY(0%)' },
@@ -17,19 +17,18 @@ const EmojiButton = ({ id, type }) => {
         config: { config: config.wobbly }
     })
 
+    const onClick = () => {
+        dispatch(sendReaction(id, type))
+        setClicked(true)
+    }
+
     return (
         <button
             className={styles.emoji}
-            onClick={() => dispatch(sendReaction(id, type))}
+            onClick={onClick}
             disabled={clicked}>
             {transitions.map(({ key, props }) => {
-                return <animated.img
-                    key={key}
-                    style={props}
-                    className={styles.emoji_image}
-                    alt={type}
-                    src={emojis[type]}
-                />
+                return <animated.img key={key} style={props} className={styles.emoji_image} alt={type} src={emojis[type]} />
             })}
             <span className={styles.count}> {count}</span>
         </button>

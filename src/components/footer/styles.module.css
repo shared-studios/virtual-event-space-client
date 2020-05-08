@@ -2,7 +2,6 @@
     grid-row: 4;
     grid-column: 1/3;
     display: grid;
-    justify-items: flex-start;
     align-items: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -13,6 +12,7 @@
 }
 
 .powered_by {
+    justify-self: flex-start;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -23,7 +23,13 @@
     grid-column: 1;
 }
 
+.copyright {
+    color: rgba(255, 255, 255, 0.658);
+    justify-self: center;
+}
+
 .logo {
+    justify-self: flex-end;
     width: 8rem
 }
 

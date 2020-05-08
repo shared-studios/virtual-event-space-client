@@ -1,12 +1,15 @@
-export default (state = {}, { type, payload }) => {
+export default (state = { video_offset: [] }, { type, payload }) => {
     switch (type) {
         case "FETCH-EVENT_FULFILLED": {
             return { ...payload, viewers: payload.viewers + 1 }
         }
         case 'UPDATE-VIDEO-OFFSET': {
             console.log('UPDATE-VIDEO-OFFSET:', payload)
-            const { segment_id, offset_value } = payload
-            state.video_offset[segment_id] = offset_value
+            const { id, duration } = payload
+            state.video_offset = state.video_offset.map((video) => {
+                if (video.id === id) return { ...video, duration }
+                return video
+            })
             return { ...state }
         }
         case 'UPDATE-EVENT-VIEWER': {

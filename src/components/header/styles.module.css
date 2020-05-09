@@ -5,10 +5,10 @@
     grid-row: 1;
     grid-column: 1/3;
     grid-template-rows: max-content max-content max-content;
-    background-color: rgb(252, 253, 253);
+    background-color: rgb(241, 241, 241);
     padding: 2.5rem 3.2rem 0rem 3.2rem;
     position: relative;
-    height: 14rem;
+    height: 14.1rem;
 }
 
 .logo {

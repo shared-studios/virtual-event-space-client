@@ -19,11 +19,11 @@ export default (state = { current: '0', agendas: [] }, { type, payload }) => {
             return { ...state, current: agenda_id }
         }
         case 'UPDATE-VIDEO-REACTION': {
-            const { agenda_id, emoji } = payload
+            const { agenda_id, type } = payload
             state.agendas = state.agendas.map((agenda) => {
                 if (agenda.id === agenda_id) {
-                    if (!agenda[emoji]) agenda[emoji] = { clicked: false, count: 0 }
-                    agenda[emoji].count++
+                    if (!agenda[type]) agenda[type] = { clicked: false, count: 0 }
+                    agenda[type].count++
                     return { ...agenda }
                 }
                 return agenda
@@ -31,12 +31,12 @@ export default (state = { current: '0', agendas: [] }, { type, payload }) => {
             return { ...state }
         }
         case 'VIDEO-REACTION_FULFILLED': {
-            const { agenda_id, emoji } = payload.data
+            const { agenda_id, type } = payload.data
             state.agendas = state.agendas.map((agenda) => {
                 if (agenda.id === agenda_id) {
-                    if (!agenda[emoji]) agenda[emoji] = { clicked: true, count: 0 }
-                    agenda[emoji].clicked = true
-                    agenda[emoji].count++
+                    if (!agenda[type]) agenda[type] = { clicked: true, count: 0 }
+                    agenda[type].clicked = true
+                    agenda[type].count++
                     return { ...agenda }
                 }
                 return agenda

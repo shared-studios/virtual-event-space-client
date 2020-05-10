@@ -1,6 +1,7 @@
 export default (state = { video_offset: [] }, { type, payload }) => {
     switch (type) {
         case "FETCH-EVENT_FULFILLED": {
+            console.log('payload', payload)
             return { ...payload, viewers: payload.viewers + 1 }
         }
         case 'UPDATE-VIDEO-OFFSET': {

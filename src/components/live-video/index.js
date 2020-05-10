@@ -33,7 +33,7 @@ const LiveVideo = () => {
     }, [dispatch, video_url, checkTime])
 
     return <div className={styles.live_video}>
-        {console.log('video')}
+        {console.log('video:', video_url)}
         <iframe className={styles.iframe} title="live stream" src={video_url} frameBorder="0" ref={iframe} allow="autoplay" allowFullScreen={true} />
         {graduatesLength === 0 && <VideoEmojis emojis={['clapping', 'heart', 'star_face']} />}
     </div>

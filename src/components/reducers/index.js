@@ -14,6 +14,6 @@ export default combineReducers({
     errors,
     socket,
     agendas,
-    graduates,
     comments,
+    graduates,
 })

@@ -1,30 +1,30 @@
 
-export default (state = [], { type, payload }) => {
+export default (state = {}, { type, payload }) => {
     switch (type) {
         case "FETCH-COMMENTS_FULFILLED": {
-            return payload.data.reverse()
+            const { comments, user_id: id } = payload
+            comments.forEach(comment => {
+                const { time_stamp, user_id } = comment
+                state[time_stamp] = { ...comment, me: (user_id === id) }
+                delete state[time_stamp].user_id
+            })
+            console.log(state)
+            return { ...state }
         } case "POST-COMMENT_FULFILLED": {
-            return [payload.data, ...state]
+            const { time_stamp } = payload.data
+            state[time_stamp] = { ...payload.data, me: true }
+            delete state[time_stamp].user_id
+            return { ...state }
         }
         case "UPDATE-COMMENT": {
-            const { status, user_id, time_stamp } = payload
-            if (status === 'rejected' && user_id !== window.config.user_id) {
-                return state.filter(({ time_stamp: time }) => time !== time_stamp)
+            const { comment: { status, user_id, time_stamp }, user_id: id } = payload
+            if (status === 'rejected' && user_id !== id) {
+                delete state[time_stamp]
+            } else {
+                state[time_stamp] = { ...payload.comment, me: (user_id === id) }
+                delete state[time_stamp].user_id
             }
-
-            const found = state.find(({ time_stamp: time }) => time === time_stamp)
-            if (found) {
-                return state.map((comment) => {
-                    if (comment.time_stamp === time_stamp) {
-                        return payload
-                    }
-                    return comment
-                })
-            }
-            if (!found) {
-                return [payload, ...state]
-            }
-            return [...state]
+            return { ...state }
         }
         default: {
             return state

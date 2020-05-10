@@ -14,9 +14,10 @@ export const onError = (e) => {
 
 export const onMessage = ({ data: message }) => {
     console.log('onMessage:', message)
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const { user: { user_id } } = getState()
         const { data, action } = JSON.parse(message)
-        if (action === 'comment') dispatch({ type: 'UPDATE-COMMENT', payload: data })
+        if (action === 'comment') dispatch({ type: 'UPDATE-COMMENT', payload: { comment: data, user_id } })
         if (action === 'agenda') dispatch(fetchAgenda(data))
         if (action === 'graduate-reaction') dispatch({ type: 'UPDATE-GRADUATE-REACTION', payload: data })
         if (action === 'video-offset') dispatch({ type: 'UPDATE-VIDEO-OFFSET', payload: data })

@@ -2,17 +2,23 @@ import React from 'react'
 import styles from './styles.module.css'
 import GraduateCard from '../graduate-card'
 import { useSelector } from 'react-redux'
-// import { useTransition } from 'react-spring'
+import { useTransition, animated } from 'react-spring'
 
 const GraduatesList = () => {
-    const image_link = useSelector(state => state.event.image_link)
-    const graduates = useSelector(state => state.graduates)
-    // const transitions = useTransition(graduates, item => item.id)
+    const image_link = useSelector(({ event }) => event.image_link)
+    const graduates = useSelector(({ graduates }) => Object.values(graduates).reverse())
+    const transitions = useTransition(graduates, item => item.id, {
+        from: { opacity: 0, height: '0px', transform: 'translateY(-100%)' },
+        enter: { opacity: 1, height: '126px', transform: 'translateY(0%)' },
+        leave: { opacity: 0, height: '0px', transform: 'translateY(100%)' }
+    })
 
     return <div className={styles.graduates_list}>
         {graduates[0] && <p className={styles.title}>Send Reactions to your Graduate</p>}
-        {Object.values(graduates).reverse().map((graduate) => {
-            return <GraduateCard key={graduate.id} {...graduate} image_link={image_link} />
+        {transitions.map(({ item, key, props }) => {
+            return item && <animated.div key={key} style={props} className={styles.diploma_card}>
+                <GraduateCard  {...item} image_link={image_link} />
+            </animated.div>
         })}
     </div>
 }

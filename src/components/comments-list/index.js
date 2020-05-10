@@ -9,7 +9,7 @@ const CommentsList = () => {
     const chatInput = useRef()
     const commentsList = useRef()
     const dispatch = useDispatch()
-    const comments = useSelector(state => state.comments)
+    const comments = useSelector(({ comments }) => Object.values(comments).reverse())
 
     useEffect(() => {
         dispatch(fetchComments())

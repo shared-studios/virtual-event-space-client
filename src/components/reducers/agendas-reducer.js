@@ -6,6 +6,7 @@ export default (state = { current: '0', agendas: [] }, { type, payload }) => {
         case "FETCH-AGENDA_FULFILLED": {
             const { id: agenda_id } = payload.data
             let foundCurrent = false
+
             state.agendas = state.agendas.map((agenda) => {
                 if (agenda.id !== agenda_id && !foundCurrent) {
                     return { ...agenda, status: 'previous' }
@@ -43,6 +44,8 @@ export default (state = { current: '0', agendas: [] }, { type, payload }) => {
             })
             return { ...state }
         }
-        default: return state
+        default: {
+            return state
+        }
     }
 }

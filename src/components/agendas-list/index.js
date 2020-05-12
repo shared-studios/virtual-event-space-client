@@ -8,10 +8,28 @@ import Plus from './plus-svg'
 
 const AgendaList = () => {
     const [show, toggle] = useState(true)
-    const agendas = useSelector(state => state.agendas.agendas)
+    const agendas = useSelector(({ agendas: { agendas } }) => agendas)
+    const graduates = useSelector(({ graduates }) => graduates)
     const dispatch = useDispatch()
 
-    useEffect(() => dispatch(fetchAgendas()), [dispatch])
+    useEffect(() => {
+        if (Object.values(graduates).length > 0 && window.innerWidth <= 900) {
+            toggle(false)
+        } else {
+            toggle(true)
+        }
+    }, [graduates])
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 900) {
+                toggle(true)
+            }
+        }
+        window.addEventListener('resize', handleResize)
+        dispatch(fetchAgendas())
+        return () => window.removeEventListener('resize', handleResize)
+    }, [dispatch])
 
     return <div className={styles.agenda_list}>
         <div className={styles.header} >

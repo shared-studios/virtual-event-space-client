@@ -1,9 +1,10 @@
 .live_video {
-    grid-row: 1;
+    grid-row: 2;
     grid-column: 1;
     width: 100%;
     padding-top: 57%;
     position: relative;
+    background-color: rgb(0, 0, 0);
 }
 
 .iframe {
@@ -22,7 +23,7 @@
     justify-items: center;
     width: max-content;
     position: absolute;
-    bottom: 4rem;
+    bottom: 3rem;
     left: 1rem;
 }
 
@@ -36,9 +37,8 @@
     padding: 0.3rem 1rem;
     margin-right: .6rem;
     color: rgb(255, 255, 255);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 300;
-    min-width: 3rem;
     display: flex;
     justify-items: flex-start;
     align-items: center;
@@ -54,6 +54,31 @@
 }
 
 .emoji_image {
-    width: 2rem;
+    width: 1.5rem;
     margin-left: 0.2rem;
+}
+
+@media(max-width: 900px) {
+    :root {
+        --emoji-font-size: calc(0.8rem + (1.2 - 0.8) * ((100vw - 20rem) / (56.25 - 20)));
+        --emoji-image-size: calc(1rem + (1.5 - 1) * ((100vw - 20rem) / (56.25 - 20)));
+        --emoji-margin-left: calc(0.2rem + (0.2 - 0.1) * ((100vw - 20rem) / (56.25 - 20)));
+        --emoji-position: calc(1rem + (3 - 1) * ((100vw - 20rem) / (56.25 - 20)));
+    }
+    .live_video_reaction {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        width: max-content;
+        position: absolute;
+        bottom: var(--emoji-position);
+        left: 1rem;
+    }
+    .emoji {
+        font-size: 1.2rem;
+    }
+    .emoji_image {
+        width: var(--emoji-image-size);
+        margin-left: var(--emoji-margin-left);
+    }
 }

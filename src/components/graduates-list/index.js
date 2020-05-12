@@ -8,9 +8,9 @@ const GraduatesList = () => {
     const image_link = useSelector(({ event }) => event.image_link)
     const graduates = useSelector(({ graduates }) => Object.values(graduates).reverse())
     const transitions = useTransition(graduates, item => item.id, {
-        from: { opacity: 0, height: '0px', transform: 'translateY(-100%)' },
-        enter: { opacity: 1, height: '126px', transform: 'translateY(0%)' },
-        leave: { opacity: 0, height: '0px', transform: 'translateY(-100%)' }
+        from: { opacity: 0, transform: 'translateY(-100%)' },
+        enter: { opacity: 1, transform: 'translateY(0%)' },
+        leave: { opacity: 0, transform: 'translateY(-100%)' }
     })
 
     return <div className={styles.graduates_list}>

@@ -19,7 +19,7 @@ const LiveVideo = () => {
     useEffect(() => {
         let previousTimeStamp = 0
         const player = new Vimeo(iframe.current)
-        // player.play()
+        player.play()
 
         const preCheckTime = ({ seconds }) => {
             const currentTimeStamp = Math.round(moment.duration(seconds, 'seconds').asSeconds())

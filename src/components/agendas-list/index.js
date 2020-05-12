@@ -1,26 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import AgendaCard from '../agenda-card'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchAgendas } from '../actions/agendas'
-import { useSpring, animated } from 'react-spring'
+import Minus from './minus-svg'
+import Plus from './plus-svg'
 
 const AgendaList = () => {
+    const [show, toggle] = useState(true)
     const agendas = useSelector(state => state.agendas.agendas)
     const dispatch = useDispatch()
-    const props = useSpring({
-        to: { opacity: 1 },
-        from: { opacity: 0 }
-    })
 
     useEffect(() => dispatch(fetchAgendas()), [dispatch])
 
-    return <animated.div style={props} className={styles.agenda_list}>
-        <p className={styles.title}>Order of Ceremony</p>
-        <div className={styles.agenda_list_body}>
-            {agendas.map((agenda, i) => <AgendaCard key={i} {...agenda} />)}
+    return <div className={styles.agenda_list}>
+        <div className={styles.header} >
+            <p className={styles.title}>Order of Ceremony</p>
+            <button className={styles.clops_button} onClick={() => toggle(!show)}>
+                {show ? <Minus /> : <Plus />}
+            </button>
         </div>
-    </animated.div>
+        {show && <div className={styles.agenda_list_body}>
+            {agendas.map((agenda, i) => <AgendaCard key={i} {...agenda} />)}
+        </div>}
+    </div>
 }
 
 export default React.memo(AgendaList)

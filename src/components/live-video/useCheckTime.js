@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
 import { fetchGraduate } from '../actions/graduates'
 import { useDispatch, useSelector } from 'react-redux'
-import timeStamp from '../time-stamps.json'
 import moment from 'moment'
 
 const CheckTime = () => {
-    const video_offset = useSelector(state => state.event.video_offset)
+    const { video_offset, time_track } = useSelector(({ event: { video_offset, time_track } }) => ({ video_offset, time_track }))
     const dispatch = useDispatch()
     const [time, checkTime] = useState(0)
 
     useEffect(() => {
-        timeStamp.forEach(({ time_stamp, type, id, video_id }) => {
+        let preRecordedVideoStarted = false
+        time_track.forEach(({ time_stamp, type, id, video_id }) => {
             const video = video_offset.find(({ id }) => id === video_id)
             let itemTimeStamp = moment.duration(time_stamp)
-            let preRecordedVideoStarted = false
 
-            if (video && video.duration > 0) {
+            if (video?.duration > 0) {
                 itemTimeStamp.add(video.duration, 's')
                 preRecordedVideoStarted = true
             }
@@ -28,7 +27,7 @@ const CheckTime = () => {
                 // console.log('item:', { time_stamp, type, id })
             }
         })
-    }, [dispatch, video_offset, time])
+    }, [dispatch, video_offset, time, time_track])
 
     return checkTime
 }

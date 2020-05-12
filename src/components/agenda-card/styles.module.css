@@ -4,8 +4,6 @@
     grid-auto-columns: max-content auto;
     margin-bottom: 1rem;
     color: rgb(0, 0, 0);
-    font-size: 1.1rem;
-    font-weight: bold;
 }
 
 .time {
@@ -20,6 +18,8 @@
     grid-row: 1;
     grid-column: 2;
     margin-bottom: 0.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 .description {
@@ -31,11 +31,5 @@
 }
 
 .previous {
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.295);
 }
-
-.current {
-    /* font-weight: 500; */
-}
-
-.next {}

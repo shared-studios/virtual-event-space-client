@@ -1,31 +1,20 @@
+:root {
+    --landing-page-width: calc(60rem + (90 - 60) * ((100vw - 62.5rem) / (105 - 62.5)));
+    --body-height: calc(45rem + (60 - 45) * ((100vw - 62.5rem) / (105 - 62.5)));
+    --body-padding-RL: calc(1rem + (2 - 1) * ((100vw - 62.5rem) / (105 - 56.25)));
+    --body-grid-column-gap: calc(1rem + (2 - 1) * ((100vw - 62.5rem) / (105 - 56.25)));
+}
+
 .landing_page {
-    width: 90rem;
-    height: 100vh;
+    width: var(--landing-page-width);
+    max-width: 90rem;
+    height: max-content;
     display: grid;
-    grid-auto-rows: auto max-content auto;
     align-items: start;
 }
 
-.body {
-    width: 100%;
-    padding: 3rem 3rem 0rem 3rem;
-    display: grid;
-    grid-template-columns: auto 27.5rem;
-    grid-template-rows: auto minmax(auto, 32rem) minmax(auto, 30rem) auto;
-}
-
-.graduates_comments {
-    grid-row: 2/4;
-    grid-column: 2;
-    height: 100%;
-    margin-left: 2rem;
-    display: grid;
-    grid-auto-rows: max-content auto;
-}
-
 .viewers {
-    grid-row: 1;
-    grid-column: 1;
+    grid-row: 2;
     background-color: #FFE794;
     width: max-content;
     min-width: 5rem;
@@ -38,7 +27,8 @@
     text-align: right;
     padding: 0rem 0.7rem;
     padding-right: 1.5rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0rem;
+    margin-left: var(--body-padding-RL);
     display: grid;
     grid-auto-flow: column;
     align-content: center;
@@ -48,4 +38,22 @@
 .viewers svg {
     align-self: center;
     margin-right: 1rem;
+}
+
+.body {
+    grid-row: 3;
+    width: 100%;
+    height: var(--body-height);
+    padding: 0rem var(--body-padding-RL);
+    display: grid;
+    grid-column-gap: var(--body-grid-column-gap);
+    grid-template-columns: 1fr 30%;
+    grid-template-rows: max-content 1fr;
+}
+
+.graduates_comments {
+    grid-row: 1/3;
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: max-content 1fr;
 }

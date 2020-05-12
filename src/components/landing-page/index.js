@@ -11,24 +11,24 @@ import { useSelector } from 'react-redux'
 import Eye from './eye-svg'
 
 const LandingPage = () => {
-    const viewers = useSelector(state => state.event.viewers)
+    const { viewers, type } = useSelector(({ user: { type }, event: { viewers } }) => ({ viewers, type }))
     return (
-        <Socket>
+        // <Socket>
+        <div className={styles.landing_page}>
             {console.log('LandingPage')}
-            <div className={styles.landing_page}>
-                <Header />
-                <div className={styles.body}>
-                    <div className={styles.viewers}><Eye /> {viewers}</div>
-                    <LiveVideo />
-                    <AgendasList />
-                    <div className={styles.graduates_comments}>
-                        <Graduates />
-                        <Comments />
-                    </div>
-                    <Footer />
+            <Header />
+            <div className={styles.viewers}><Eye /> {viewers}</div>
+            <div className={styles.body}>
+                <LiveVideo />
+                <AgendasList />
+                <div className={styles.graduates_comments}>
+                    <Graduates />
+                    {type !== 'public' && <Comments />}
                 </div>
             </div>
-        </Socket>
+            <Footer />
+        </div>
+        // </Socket>
     )
 }
 

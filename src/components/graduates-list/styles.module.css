@@ -1,9 +1,8 @@
 .graduates_list {
-    grid-column: 1;
     grid-row: 1;
     height: max-content;
     overflow: hidden;
-    max-height: 38.3rem;
+    max-height: 34rem;
     transition: 300ms linear all;
     display: flex;
     flex-direction: column;

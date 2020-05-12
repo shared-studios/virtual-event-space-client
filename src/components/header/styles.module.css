@@ -1,14 +1,15 @@
+/* calc(width + (max-width - min-width) * ((100vw - min-screen) / (mac-screen - min-screen))) */
+
 .header {
+    grid-row: 1;
+    height: 14.1rem;
     display: grid;
     justify-items: flex-start;
     align-items: center;
-    grid-row: 1;
-    grid-column: 1/3;
     grid-template-rows: max-content max-content max-content;
     background-color: rgb(241, 241, 241);
     padding: 2.5rem 3.2rem 0rem 3.2rem;
     position: relative;
-    height: 14.1rem;
 }
 
 .logo {
@@ -26,7 +27,7 @@
     font-weight: 200;
 }
 
-.data {
+.date {
     grid-row: 3;
     grid-column: 1;
     color: rgb(5, 33, 110);
@@ -38,6 +39,6 @@
     height: 17.6rem;
     justify-self: flex-end;
     position: absolute;
-    right: 2rem;
+    right: 3.2rem;
     top: 0;
 }

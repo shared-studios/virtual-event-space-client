@@ -19,7 +19,7 @@ const LiveVideo = () => {
     useEffect(() => {
         let previousTimeStamp = 0
         const player = new Vimeo(iframe.current)
-        player.play()
+        // player.play()
 
         const preCheckTime = ({ seconds }) => {
             const currentTimeStamp = Math.round(moment.duration(seconds, 'seconds').asSeconds())
@@ -32,9 +32,18 @@ const LiveVideo = () => {
         player.on('timeupdate', preCheckTime)
     }, [dispatch, video_url, checkTime])
 
+
     return <div className={styles.live_video}>
-        {console.log('video:', video_url)}
-        <iframe className={styles.iframe} title="live stream" src={video_url} frameBorder="0" ref={iframe} allow="autoplay" allowFullScreen={true} />
+        {console.log('video')}
+        <iframe
+            ref={iframe}
+            className={styles.iframe}
+            title="live stream"
+            src={video_url}
+            frameBorder="0"
+            allow="autoplay"
+            allowFullScreen={true}
+        />
         {graduatesLength === 0 && <VideoEmojis emojis={['clapping', 'heart', 'star_face']} />}
     </div>
 }

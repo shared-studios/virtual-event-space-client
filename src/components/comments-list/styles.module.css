@@ -7,6 +7,7 @@
     box-shadow: -7px 0px 34px -21px rgba(0, 0, 0, 0.75);
     display: grid;
     overflow: hidden;
+    width: 100%;
 }
 
 .comment_input {
@@ -53,7 +54,6 @@
 .comments_list {
     grid-row: 1/3;
     grid-column: 1;
-    height: auto;
     overflow-y: auto;
     padding: 0rem 0.5rem;
     height: 100%;

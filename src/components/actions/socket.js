@@ -4,12 +4,16 @@ import emojis from '../emojis'
 
 export const onConnect = (socket) => {
     console.log('onConnect:', socket)
-    return (dispatch) => dispatch({ type: 'SOCKET-CONNECTED', payload: socket })
+    return (dispatch) => {
+        dispatch({ type: 'SOCKET-CONNECTED', payload: socket })
+    }
 }
 
 export const onError = (e) => {
     console.log('onError:', e)
-    return (dispatch) => dispatch({ type: 'ERROR', payload: "Network error" })
+    return (dispatch) => {
+        dispatch({ type: 'ERROR', payload: "Network error" })
+    }
 }
 
 export const onMessage = ({ data: message }) => {

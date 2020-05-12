@@ -10,7 +10,7 @@ const CommentsList = () => {
     const commentsList = useRef()
     const dispatch = useDispatch()
     const comments = useSelector(({ comments }) => Object.values(comments).reverse())
-
+    // const comments = []
     useEffect(() => {
         dispatch(fetchComments())
         const onEnter = (e) => {
@@ -27,7 +27,7 @@ const CommentsList = () => {
 
     return (
         <div className={styles.comments}>
-            {console.log('Comments')}
+            {console.log('Commentsssss')}
             <div className={styles.comment_input}>
                 <input ref={chatInput} className={styles.input} placeholder="Add a public comment here..." />
                 <Message className={styles.icon} />

@@ -11,14 +11,13 @@ html, body, #root {
     height: 100vh;
     background-color: rgb(8, 72, 168);
     overflow: hidden;
-    overflow-y: auto;
-    overflow-x: auto;
 }
 
 #root {
     display: grid;
     justify-items: center;
     align-items: center;
+    overflow-y: auto;
 }
 
 button {

@@ -7,7 +7,7 @@ import emojis from '../emojis'
 
 const EmojiButton = ({ id, type }) => {
     const graduate = useSelector(state => state.graduates[id])
-    const count = graduate?.[type]?.count || 400
+    const count = graduate?.[type]?.count || 0
     const [clicked, setClicked] = useState(graduate?.[type]?.clicked || false)
     const dispatch = useDispatch()
     const transitions = useTransition(count, null, {

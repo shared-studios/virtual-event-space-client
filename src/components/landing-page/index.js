@@ -13,22 +13,22 @@ import Eye from './eye-svg'
 const LandingPage = () => {
     const { viewers, type } = useSelector(({ user: { type }, event: { viewers } }) => ({ viewers, type }))
     return (
-        // <Socket>
-        <div className={styles.landing_page}>
-            {console.log('LandingPage')}
-            <Header />
-            <div className={styles.body}>
-                <div className={styles.viewers}><Eye /> {viewers}</div>
-                <LiveVideo />
-                <AgendasList />
-                <div className={styles.graduates_comments}>
-                    <Graduates />
-                    {type !== 'public' && <Comments />}
+        <Socket>
+            <div className={styles.landing_page}>
+                {console.log('LandingPage')}
+                <Header />
+                <div className={styles.body}>
+                    <div className={styles.viewers}><Eye /> {viewers}</div>
+                    <LiveVideo />
+                    <AgendasList />
+                    <div className={styles.graduates_comments}>
+                        <Graduates />
+                        {type !== 'public' && <Comments />}
+                    </div>
+                    <Footer />
                 </div>
-                <Footer />
             </div>
-        </div>
-        // </Socket>
+        </Socket>
     )
 }
 
